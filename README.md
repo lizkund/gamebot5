@@ -5,7 +5,7 @@ ACIT 4850 Assignment
 
 * [YJ] Yoseph  Jo
 * [LK] Liz     Kundilivskaya 
-* [] Joti    Lalli
+* [JL] Joti    Lalli
 * [KT] Kenneth Tran
 
 ### Base Requirements:
