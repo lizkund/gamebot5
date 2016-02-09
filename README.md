@@ -4,7 +4,7 @@ ACIT 4850 Assignment
 ### Group 05 Team Members
 
 * [] Yoseph  Jo
-* [] Liz     Kundilivskaya
+* [LK] Liz     Kundilivskaya 
 * [] Joti    Lalli
 * [KT] Kenneth Tran
 
