@@ -3,11 +3,22 @@
 </div>
 
 <div id="bot_summary">
-{BotPieceSummary}    
-    
+    {BotPieceSummary}    
+
 </div>
 
+
 <div id="player_info">
-{PlayerInfo}
-    
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th> 
+                <th>Peanuts</th> 
+                <th>Equity</th>
+            <tr>
+        </thead>
+        <tbody>
+            {PlayerInfo}   
+        </tbody>   
+    </table>
 </div>
