@@ -9,11 +9,11 @@
 		<div id="wrapper">
 			<div id="header">
 				<h1 id="site_title">{title}</h1>
-				<div class="navbar">
+				<nav>
 					<div class="navbar-inner">
 						{menubar}
 					</div>
-				</div>
+				</nav>
 			</div>
 			<div id="content">
 				{content}
