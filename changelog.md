@@ -1,6 +1,7 @@
 # Project Changelog
 >Template: YYYY-MM-DD HH:MM - Comment
 
+2016-02-10 19:29 - Added homepage & its subviews
 2016-02-10 19:15 - Added the slash in the CodeIgniter config file (base_url) as per Jim.
 2016-02-10 19:00 - Fixed autoloading the parser library
 2016-02-10 18:10 - Base_Template is done
