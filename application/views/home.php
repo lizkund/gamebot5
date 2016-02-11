@@ -4,9 +4,7 @@
 
 <div id="bot_summary">
     {BotPieceSummary}    
-
 </div>
-
 
 <div id="player_info">
     <table>
