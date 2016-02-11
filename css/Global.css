@@ -9,26 +9,21 @@ and open the template in the editor.
 */
 
 /* generic styles */
-*
-{
-	font-family: 'Lucida Grande', Verdana, Arial, Helvetica, Sans-serif;
-	margin: 0;
+* {
 	padding: 0;
-	font-size: 11px;
+	font-size: 1.0em;
 	outline-style: none;
 	color: #000;
 	text-shadow: none !important;
 	background: none;
 }
 
-h2
-{
-	font-size: 14px !important; 
+h1 {
+	font-size: 2.0em !important; 
 	margin-bottom: 10px !important;
 }
 
-a
-{
+a {
 	color: #0e3e7e !important;
 	text-decoration: none !important;
 	font-weight: normal !important;
@@ -39,33 +34,8 @@ a
 		text-decoration: underline !important;
 	}
 
-input
-{
-	color: #000 !important;
-}
-
 label 
 {
 	text-transform: none !important;
 	font-weight: normal !important;
-}
-
-.content
-{
-	display: none;
-	position: fixed;
-	top: 50px;
-	left: 50%;
-	margin-left: -222px;
-	color: #333;
-	/*    padding: 10px 20px;*/
-	width: 400px;
-	border: 2px solid #666;
-	z-index: 300000;
-	background-color: #fff;
-	word-wrap:break-word;
-	border: 1px solid #ccc; display: none; 
-	-moz-box-shadow: 1px 0px 5px 1px rgba(0,0,0,0.3); 
-	-webkit-box-shadow: 1px 0px 5px 1px rgba(0,0,0,0.3); 
-	box-shadow: 1px 0px 5px 1px rgba(0,0,0,0.3);
 }
