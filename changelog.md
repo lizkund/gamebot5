@@ -1,6 +1,7 @@
 # Project Changelog
 >Template: YYYY-MM-DD HH:MM - Comment
 
+2016-02-10 19:00 - Fixed autoloading the parser library
 2016-02-10 18:10 - Base_Template is done
 2016-02-10 18:07 - updated config to have arrays of menu bar, updated controller for the welcome page and _template.
 2016-02-10 18:04 - added MY_Controller, _menubar, and global css
