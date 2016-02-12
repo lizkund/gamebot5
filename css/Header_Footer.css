@@ -1,0 +1,71 @@
+/* 
+    Created on : 10-Feb-2016, 7:17:15 PM
+    Author     : yoseph
+*/
+#header {
+	height: 150px;
+	position: relative;
+	background: #004A75 url('../img/hd-bg.gif') repeat-x 0 0;
+}
+
+#header-in {
+	width: 900px;
+	height: 150px;
+	position: relative;
+	margin: 0 auto;
+}
+
+#site-name {
+	padding: 49px 0 0 15px;
+}
+
+#menu-box {
+background: #4A4A4A url('../img/menu-bg.gif') repeat-x 0 0;
+border-bottom: 3px solid black;
+}
+
+#menu {
+width: 950px;
+margin: 0 auto;
+}
+#menu li {
+	display: inline;
+	list-style-type: none;
+	text-align: center;
+}
+
+#menu li.first a {
+	margin-left: 1.6em;
+	display: inline
+}
+
+#menu li a {
+	float: left;
+	display: block;
+	padding: 0.9em 1.4em 0.7em 1.4em;
+}
+
+#menu li a:hover, #menu li a.active {
+	color: #000000;
+	background-color: #990000;
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
+#footer {
+	width: 100%;
+	height: 50px;
+	background: #004A75 url('../img/footer-bg.gif') repeat-x 0 0;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding-top: 10px;
+}
+
+div#footer-in {
+	padding-top: 10px;
+	width: 950px;
+	color: #FFFFFF;
+	text-align: center;
+	display: inline;
+}
