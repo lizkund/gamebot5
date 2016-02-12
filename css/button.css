@@ -1,0 +1,37 @@
+/******************************************************************************/
+/*******************************BUTTON TEMPLATE********************************/
+/******************************************************************************/
+button, input[type="submit"], input[type="reset"] {        
+	display: inline-block;
+	background-color: #ccc;
+	background-image: linear-gradient(#eee, #ccc);
+	border: 1px solid #777;
+	padding: 0.25em 0.75em;
+	font: bold 1em Arial;
+	text-decoration: none;
+	color: #333;
+	text-shadow: 0 1px 0 rgba(255,255,255,.8);
+	border-radius: .2em;
+	box-shadow: 0 0 1px 1px rgba(255,255,255,.8) inset, 0 1px 0 rgba(0,0,0,.3);
+}
+
+button:hover, input[type="submit"]:hover, input[type="reset"]:hover {
+	background-color: #ddd;        
+	background-image: linear-gradient(#fafafa, #ddd);
+}
+
+button:active, input[type="submit"]:active, input[type="reset"]:active {
+	box-shadow: 0 0 4px 2px rgba(0,0,0,.3) inset;
+	position: relative;
+	top: 1px;
+}
+
+button:focus, input[type="submit"]:focus, input[type="reset"]:focus {
+	outline: 0;
+	background: #fafafa;
+}
+
+button:disabled, button:disabled:hover, button:disabled:focus, button:disabled:active {
+	color: #555;
+	opacity: 0.3;
+}

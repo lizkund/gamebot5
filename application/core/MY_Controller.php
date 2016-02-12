@@ -9,10 +9,11 @@
  * @copyright           2010-2013, James L. Parry
  * ------------------------------------------------------------------------
  */
-class Application extends CI_Controller {
+class Application extends CI_Controller
+{
 
-	protected $data = array();	  // parameters for view components
-	protected $id;			  // identifier for our content
+	protected $data = array();   // parameters for view components
+	protected $id;  // identifier for our content
 
 	/**
 	 * Constructor.
@@ -23,10 +24,12 @@ class Application extends CI_Controller {
 	{
 		parent::__construct();
 		$this->data = array();
-		$this->data['title'] = 'Assignment 1: GameBots-05';	// our default title
+		$this->data['title'] = 'Assignment 1: GameBots-05'; // our default title
 		$this->data['site-title'] = 'GameBots-G5';
 		$this->errors = array();
 		$this->data['pageTitle'] = 'welcome';   // our default page
+
+		$this->data['css'] = (strlen(dirname($_SERVER['SCRIPT_NAME'])) === 1 ? "/" : dirname($_SERVER['SCRIPT_NAME']) . "/") . "css/";
 	}
 
 	/**
