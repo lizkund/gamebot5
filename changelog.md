@@ -1,6 +1,7 @@
 # Project Changelog
 >Template: YYYY-MM-DD HH:MM - Comment
 
+2016-02-12 10:50 - Fixed spacing inconsistencies / alignment formatting on some views.
 2016-02-12 10:30 - Link to css is fixed as it was suggested.
 2016-02-11 20:52 - Overall CSS including all devices is done.
 2016-02-11 17:35 - Overall CSS is 90% done
