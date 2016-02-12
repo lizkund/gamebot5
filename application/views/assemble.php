@@ -1,12 +1,12 @@
 <div id="FinishedProduct">
-    {BotAssembled}
+        {BotAssembled}
 </div>
 
 
 <div id="Options">
-    {OptionsDropdown}
+        {OptionsDropdown}
 </div>
 
 <div id="Assemble">
-    {AssembleButton}
+        {AssembleButton}
 </div>
