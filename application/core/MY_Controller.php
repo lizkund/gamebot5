@@ -9,8 +9,7 @@
  * @copyright           2010-2013, James L. Parry
  * ------------------------------------------------------------------------
  */
-class Application extends CI_Controller
-{
+class Application extends CI_Controller {
 
 	protected $data = array();   // parameters for view components
 	protected $id;  // identifier for our content
@@ -28,8 +27,7 @@ class Application extends CI_Controller
 		$this->data['site-title'] = 'GameBots-G5';
 		$this->errors = array();
 		$this->data['pageTitle'] = 'welcome';   // our default page
-
-		$this->data['css'] = (strlen(dirname($_SERVER['SCRIPT_NAME'])) === 1 ? "/" : dirname($_SERVER['SCRIPT_NAME']) . "/") . "css/";
+		$this->data['appRoot'] = (strlen(dirname($_SERVER['SCRIPT_NAME'])) === 1 ? "" : dirname($_SERVER['SCRIPT_NAME']));
 	}
 
 	/**

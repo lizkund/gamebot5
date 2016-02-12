@@ -3,10 +3,10 @@
 	<head>
 		<title>{title}</title>
 		<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
-		<link href="{css}style.css" rel="stylesheet" type="text/css"/>
-		<link href="{css}button.css" rel="stylesheet" type="text/css"/>
-		<link href="{css}tablet.css" rel="stylesheet" type="text/css"/>
-		<link href="{css}smartphone.css" rel="stylesheet" type="text/css"/>
+		<link href="{appRoot}/css/style.css" rel="stylesheet" type="text/css"/>
+		<link href="{appRoot}/css/button.css" rel="stylesheet" type="text/css"/>
+		<link href="{appRoot}/css/tablet.css" rel="stylesheet" type="text/css"/>
+		<link href="{appRoot}/css/smartphone.css" rel="stylesheet" type="text/css"/>
 	</head>
 	<body>
 		<header>
