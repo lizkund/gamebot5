@@ -20,7 +20,7 @@ class Welcome extends Application {
 	 */
 	public function index()
 	{
-		$this->data['pagebody'] = 'welcome';	// this is the view we want shown
+		$this->data['pagebody'] = 'home';	// this is the view we want shown
 		$this->render();
 	}
 }
