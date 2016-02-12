@@ -18,5 +18,5 @@
 		<tbody>
 			{PlayerInfo}
 		</tbody>
- </table>
+	</table>
 </div>
