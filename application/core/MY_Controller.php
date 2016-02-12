@@ -24,6 +24,7 @@ class Application extends CI_Controller {
 		parent::__construct();
 		$this->data = array();
 		$this->data['title'] = 'Assignment 1: GameBots-05';	// our default title
+		$this->data['site-title'] = 'GameBots-G5';
 		$this->errors = array();
 		$this->data['pageTitle'] = 'welcome';   // our default page
 	}

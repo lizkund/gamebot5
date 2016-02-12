@@ -4,22 +4,29 @@
 		<title>{title}</title>
 		<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
 		<link href="../../css/Global.css" rel="stylesheet" type="text/css"/>
+		<link href="../../css/Header_Footer.css" rel="stylesheet" type="text/css"/>
 	</head>
 	<body>
 		<div id="wrapper">
-			<div id="header">
-				<h1 id="site_title">{title}</h1>
-				<nav>
-					<div class="navbar-inner">
-						{menubar}
+			<div id='head-container'>
+				<div id="header">
+					<div id="header-in">
+						<!-- Your website name  -->
+						<h1 id='site-name'>{site-title}</h1>
+						<!-- Your website name end -->
 					</div>
-				</nav>
+				</div>
+				<div id="menu-box" class="cleaning-box">
+					{menubar}
+				</div>
 			</div>
 			<div id="content">
 				{content}
 			</div>
-			<div id="footer" class="span12">
-				Copyright &copy; 2016 <strong></strong>.
+			<div id="footer">
+				<div id='footer-in'>
+					Copyright &copy; 2016 <strong>Group 5 - Assignment 1</strong>.
+				</div>
 			</div>
 		</div>
 	</body>
