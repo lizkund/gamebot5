@@ -9,7 +9,7 @@ class Assemble extends Application {
 	
 	public function index()
 	{
-                $this->data['pagebody'] = 'assemble';	// this is the view we want shown
+                $this->data['pagebody'] = 'assemble';	// this is the view we want shown 
                 
                 
                 
