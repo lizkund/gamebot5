@@ -31,7 +31,7 @@ img{
 }
 
 header {
-	height: 175px;
+	height: 200px;
 	position: relative;
 	background: #004A75 url('../images/hd-bg.gif') repeat-x 0 0;
 	width: 80%;
@@ -47,9 +47,7 @@ div#header-in{
 }
 
 div#header-in > a > img{
-	height: 75%;
-	width: 55%;
-	padding-top: 2.0em;
+	padding-top: 1.75em;
 }
 
 #container { 
