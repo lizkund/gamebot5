@@ -4,7 +4,7 @@
  */
 ?>
 <ul>
-    {menuname}
-    <li><a href="{link}">{name}</a></li>
-    {/menuname}
+	{menuname}
+	<li><a href="{link}">{name}</a></li>
+	{/menuname}
 </ul>
