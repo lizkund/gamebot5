@@ -1,6 +1,7 @@
 # Project Changelog
 >Template: YYYY-MM-DD HH:MM - Comment
 
+2016-02-11 17:35 - Overall CSS is 90% done
 2016-02-10 19:29 - Edited the playerinfo view
 2016-02-10 19:29 - Added homepage & its subviews
 2016-02-10 19:15 - Added the slash in the CodeIgniter config file (base_url) as per Jim.
