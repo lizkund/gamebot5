@@ -8,15 +8,17 @@
 	</head>
 	<body>
 		<div id="wrapper">
-			<div id="header">
-				<div id="header-in">
-					<!-- Your website name  -->
-					<h1 id='site-name'>{site-title}</h1>
-					<!-- Your website name end -->
+			<div id='head-container'>
+				<div id="header">
+					<div id="header-in">
+						<!-- Your website name  -->
+						<h1 id='site-name'>{site-title}</h1>
+						<!-- Your website name end -->
+					</div>
 				</div>
-			</div>
-			<div id="menu-box" class="cleaning-box">
-				{menubar}
+				<div id="menu-box" class="cleaning-box">
+					{menubar}
+				</div>
 			</div>
 			<div id="content">
 				{content}

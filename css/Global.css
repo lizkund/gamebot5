@@ -72,10 +72,9 @@ h3 {
 }
 
 #content {
-	width: 950px;
+	width: 1000px;
 	margin: 0 auto;
 	background-color: #FFFFFF;
-	text-align: left;
 	border-right: 1px solid #B0B0B0;
 	border-left: 1px solid #B0B0B0;
 	padding-bottom: 80px;

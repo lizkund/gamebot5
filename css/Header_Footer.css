@@ -2,14 +2,17 @@
     Created on : 10-Feb-2016, 7:17:15 PM
     Author     : yoseph
 */
-#header {
+#head-container{
+	width: 100%;
 	height: 150px;
-	position: relative;
 	background: #004A75 url('../img/hd-bg.gif') repeat-x 0 0;
+	position: absolute;
+	top: 0;
+	padding-top: 10px;
 }
 
 #header-in {
-	width: 900px;
+	width: 50%;
 	height: 150px;
 	position: relative;
 	margin: 0 auto;
@@ -17,16 +20,17 @@
 
 #site-name {
 	padding: 49px 0 0 15px;
+	color: white;
 }
 
 #menu-box {
-background: #4A4A4A url('../img/menu-bg.gif') repeat-x 0 0;
-border-bottom: 3px solid black;
+	background: #4A4A4A url('../img/menu-bg.gif') repeat-x 0 0;
+	border-bottom: 3px solid black;
 }
 
 #menu {
-width: 950px;
-margin: 0 auto;
+	width: 50%;
+	margin: 0 auto;
 }
 #menu li {
 	display: inline;
