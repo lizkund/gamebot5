@@ -10,9 +10,11 @@
 	</head>
 	<body>
 		<header>
-			<h1 id='header-in'>
-				{site-title}
-			</h1>
+			<div id='header-in'>
+				<a href="{appRoot}/">
+					<img src="{appRoot}/images/banner.png"/>
+				</a>
+			</div>
 		</header>
 		<nav id='navigation'>
 			{menubar}

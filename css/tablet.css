@@ -4,6 +4,13 @@
 	header {
 		width: 95%;
 	}
+
+	div#header-in > a > img{
+		height: 70%;
+		width: 50%;
+		padding-top: 2.0em;
+	}
+
 	nav > ul {
 		font-weight: 700;
 		width: 100%; 
