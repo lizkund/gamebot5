@@ -1,5 +1,7 @@
 <?php
 
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * core/MY_Controller.php
  *
@@ -35,7 +37,15 @@ class Application extends CI_Controller {
 	 */
 	function render()
 	{
-		$this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices'), true);
+		// This is a workaround to dynamically append a folder name if application is not in root.
+		$tempMenu = array();
+		foreach ($this->config->item('menu_choices')['menuname'] as $record)
+		{
+			$record['appRoot'] = $this->data['appRoot'];
+			$tempMenu['menuname'][] = $record;
+		}
+
+		$this->data['menubar'] = $this->parser->parse('_menubar', $tempMenu, true);
 		$this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
 
 		// finally, build the browser page!
