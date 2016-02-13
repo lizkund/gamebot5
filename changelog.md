@@ -18,7 +18,8 @@
 2016-02-12 16:02 - The way title of each page looks has been changed
 2016-02-12 15:43 - adjusted indentation in the view for assembly 
 2016-02-12 15:19 - Created Assemble controller and assemble view and added a CamelCase rule to ReadMe
-2016-02-12 15:13 - Banner added on the top2016-02-12 16:35 - Fixed spacing/tab alignment in player view page.
+2016-02-12 15:13 - Banner added on the top
+2016-02-12 16:35 - Fixed spacing/tab alignment in player view page.
 2016-02-12 12:35 - Optimized getting the application path in the controller for menu links and assets.
 2016-02-12 10:50 - Fixed spacing inconsistencies / alignment formatting on some views.
 2016-02-12 10:30 - Link to css is fixed as it was suggested.
