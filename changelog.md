@@ -1,6 +1,7 @@
 # Project Changelog
 >Template: YYYY-MM-DD HH:MM - Comment
 
+2016-02-12 16:30 - Removed welcome_message.php as it's not needed anymore.
 2016-02-12 16:28 - A little bit of PHP Housekeeping to prevent direct access to php files.
 2016-02-12 16:25 - Fixed the menu links, just in case the app was run in a folder and not root.
 2016-02-12 16:15 - Created the Player Page and Controller, and added a route configuration.
