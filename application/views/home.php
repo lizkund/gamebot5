@@ -1,4 +1,9 @@
-<div id="game_status">
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+/**
+ * The Home Page
+ */
+?><div id="game_status">
 	{gameStatus}
 </div>
 
