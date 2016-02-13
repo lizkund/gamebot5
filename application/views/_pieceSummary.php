@@ -7,8 +7,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 {collection}
 <tr>
 	<td>{Series}</td>
-	<td>{BotType}</td>
-	<td>{BotPart}</td>
+	<td>{Description}</td>
+	<td>{Frequency}</td>
+	<td>{Value}</td>
 	<td>{Quantity}</td>
 </tr>
 {/collection}

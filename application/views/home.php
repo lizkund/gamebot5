@@ -12,9 +12,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<thead>
 			<tr>
 				<th>Bot Series</th>
-				<th>Bot Type</th>
-				<th>Bot Part</th>
-				<th>Quantity</th>
+				<th>Description</th>
+				<th>Frequency</th>
+				<th>Value (in Peanuts)</th>
+				<th>Bot Pieces</th>
 			<tr>
 		</thead>
 		<tbody>
