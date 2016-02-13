@@ -22,14 +22,31 @@ class Welcome extends Application {
 	public function index() {
 		$this->data['pagebody'] = 'home'; // this is the view we want shown
 		$this->data['gameStatus'] = "Offline - Currently under development";
-		$this->data['playerInfo'] = "";  //calling playerinfo
-		//
-		// Get the bot piece summary
+
+		//get the data from all tables
+		$players = $this->players->all();
+		$cards = $this->collections->all();
 		$table = $this->series->all();
+
+		$playersTable = array();
+		foreach ($players as $player) {
+			$pRow = array(
+				//calling the columns from the database players column
+				'Player' => $player->Player,
+				'Peanuts' => $player->Peanuts,
+				'Equity' => count($this->collections->some('Player', $player->Player))
+			);
+			$playersTable[] = $pRow;
+		}
+
+
+		$PlayerSummary['Players'] = $playersTable;
+		$this->data['playerInfo'] = $this->parser->parse('_playerinfo1', $PlayerSummary, true);
 
 		$series = array();
 		foreach ($table as $type) {
 			$row = array(
+				//calling the columns from the database series column
 				'Series' => $type->Series,
 				'Description' => $type->Description,
 				'Frequency' => $type->Frequency,
@@ -40,15 +57,15 @@ class Welcome extends Application {
 		}
 
 		// Get all cards in db
-		$cards = $this->collections->all();
 		foreach ($cards as $card) {
 			$key = array_search(substr($card->Piece, 0, 2), array_column($series, 'Series'));
 			$series[$key]['Quantity'] ++;
 		}
 
 		$summary['collection'] = $series;
-
 		$this->data['botPieceSummary'] = $this->parser->parse('_pieceSummary', $summary, true);
+
+
 
 		$this->render();
 	}

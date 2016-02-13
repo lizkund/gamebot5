@@ -1,6 +1,7 @@
 # Project Changelog
 >Template: YYYY-MM-DD HH:MM - Comment
 
+2016-02-13 15:50 - Player summary - completed
 2016-02-13 13:40 - Bot Piece Summary - completed
 2016-02-13 13:38 - Sitename changed
 2016-02-13 13:36 - Favicon extension changed to ico
