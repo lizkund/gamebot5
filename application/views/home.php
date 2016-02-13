@@ -3,13 +3,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * The Home Page
  */
-?><div id="game_status">
-	{gameStatus}
+?>
+<div class="content-left">
+	<div id="game_status" class="box">
+		{gameStatus}
+	</div>
+	<br/>
+	<div id="bot_summary" class="box">
+		{BotPieceSummary} 
+	</div>
 </div>
 
-<div id="bot_summary">
-	{BotPieceSummary} 
-</div>
 
 <div id="player_info">
 	<table>
