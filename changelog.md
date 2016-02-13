@@ -1,6 +1,7 @@
 # Project Changelog
 >Template: YYYY-MM-DD HH:MM - Comment
 
+2016-02-13 13:22 - Layout for homepage is done. And also minor changes is global template css
 2016-02-12 19:50 - Fixed spacing/tab in assembly pages.
 2016-02-12 17:44 - added title to assembly page
 2016-02-12 17:24 - Favicon added.
