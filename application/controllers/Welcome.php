@@ -21,6 +21,9 @@ class Welcome extends Application {
 	public function index()
 	{
 		$this->data['pagebody'] = 'home';	// this is the view we want shown
+		
+		$this->data['gameStatus'] = "Offline - Currently under development";
+		
 		$this->render();
 	}
 }

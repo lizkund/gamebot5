@@ -1,6 +1,7 @@
 # Project Changelog
 >Template: YYYY-MM-DD HH:MM - Comment
 
+2016-02-12 15:25 - Fixed the menu links, just in case the app was run in a folder and not root.
 2016-02-12 16:15 - Created the Player Page and Controller, and added a route configuration.
 2016-02-12 16:10 - Created the Model core class/interface as well as Model classes used used in the app, and put in autoload.
 2016-02-12 12:35 - Optimized getting the application path in the controller for menu links and assets.
