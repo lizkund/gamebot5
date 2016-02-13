@@ -1,6 +1,9 @@
 # Project Changelog
 >Template: YYYY-MM-DD HH:MM - Comment
 
+2016-02-13 13:38 - Sitename changed
+2016-02-13 13:36 - Favicon extension changed to ico
+2016-02-13 13:22 - Layout for homepage is done. And also minor changes is global template css
 2016-02-12 19:50 - Fixed spacing/tab in assembly pages.
 2016-02-12 17:44 - added title to assembly page
 2016-02-12 17:24 - Favicon added.
@@ -16,11 +19,6 @@
 2016-02-12 15:43 - adjusted indentation in the view for assembly 
 2016-02-12 15:19 - Created Assemble controller and assemble view and added a CamelCase rule to ReadMe
 2016-02-12 15:13 - Banner added on the top2016-02-12 16:35 - Fixed spacing/tab alignment in player view page.
-2016-02-12 16:30 - Removed welcome_message.php as it's not needed anymore.
-2016-02-12 16:28 - A little bit of PHP Housekeeping to prevent direct access to php files.
-2016-02-12 16:25 - Fixed the menu links, just in case the app was run in a folder and not root.
-2016-02-12 16:15 - Created the Player Page and Controller, and added a route configuration.
-2016-02-12 16:10 - Created the Model core class/interface as well as Model classes used used in the app, and put in autoload.
 2016-02-12 12:35 - Optimized getting the application path in the controller for menu links and assets.
 2016-02-12 10:50 - Fixed spacing inconsistencies / alignment formatting on some views.
 2016-02-12 10:30 - Link to css is fixed as it was suggested.

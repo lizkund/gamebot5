@@ -8,11 +8,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<head>
 		<title>{pageTitle} | {site-title}</title>
 		<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
-		<link rel="shortcut icon" type="image/png" href="{appRoot}/images/favicon.png" />
+		<link rel="shortcut icon" type="image/ico" href="{appRoot}/images/favicon.ico" />
+		<!--Global Template CSS-->
 		<link href="{appRoot}/css/style.css" rel="stylesheet" type="text/css"/>
 		<link href="{appRoot}/css/button.css" rel="stylesheet" type="text/css"/>
 		<link href="{appRoot}/css/tablet.css" rel="stylesheet" type="text/css"/>
 		<link href="{appRoot}/css/smartphone.css" rel="stylesheet" type="text/css"/>
+		
+		<!--Layout CSS for each page-->
+		<link href="{appRoot}/css/home.css" rel="stylesheet" type="text/css"/>
+		<link href="{appRoot}/css/player.css" rel="stylesheet" type="text/css"/>
+		<link href="{appRoot}/css/assemble.css" rel="stylesheet" type="text/css"/>
 	</head>
 	<body>
 		<header>
