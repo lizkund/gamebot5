@@ -4,6 +4,7 @@
 2016-02-12 19:50 - Fixed spacing/tab in assembly pages.
 2016-02-12 17:44 - added title to assembly page
 2016-02-12 17:24 - Favicon added.
+2016-02-12 17:20 - Housekeeping on bot images.
 2016-02-12 17:00 - Fix autoload models.
 2016-02-12 16:35 - Fixed spacing/tab alignment in player view page.
 2016-02-12 16:30 - Removed welcome_message.php as it's not needed anymore.
