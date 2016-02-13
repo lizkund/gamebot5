@@ -18,11 +18,15 @@ class Welcome extends Application {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+		
+	
 	public function index()
 	{
 		$this->data['pagebody'] = 'home';	// this is the view we want shown
-		
 		$this->data['gameStatus'] = "Offline - Currently under development";
+		$this->data['playerInfo'] = "";		//calling playerinfo
+		$this->data['botPieceSummary'] = $this->parser->parse('_pieceSummary', $this->collections->piece_summary(),true);
+
 		
 		$this->render();
 	}
