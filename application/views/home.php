@@ -14,7 +14,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</div>
 </div>
 
-
+<div id="bot_summary">
+	<table>
+		<thead>
+			<tr>
+				<th>Bot Series</th>
+				<th>Description</th>
+				<th>Frequency</th>
+				<th>Value (in Peanuts)</th>
+				<th>Bot Pieces</th>
+			<tr>
+		</thead>
+		<tbody>
+			{botPieceSummary}
+		</tbody>
+	</table>
+</div>
 <div id="player_info">
 	<table>
 		<thead>
@@ -25,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<tr>
 		</thead>
 		<tbody>
-			{PlayerInfo}
+			{playerInfo}
 		</tbody>
 	</table>
 </div>
