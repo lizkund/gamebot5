@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * The Individual Player Page
  */
 ?><div id="avatar">
-    {avatar}
+	{avatar}
 </div>
 
 <div id="playerDetails">
