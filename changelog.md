@@ -1,6 +1,7 @@
 # Project Changelog
 >Template: YYYY-MM-DD HH:MM - Comment
 
+2016-02-12 17:44 - added page title to assembly page
 2016-02-12 15:43 - adjusted indentation in the view for assembly 
 2016-02-12 15:19 - Created Assemble controller and assemble view and added a CamelCase rule to ReadMe
 2016-02-12 16:35 - Fixed spacing/tab alignment in player view page.

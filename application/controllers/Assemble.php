@@ -7,6 +7,7 @@ class Assemble extends Application {
     // Assemble page where users get to put together pieces of robots
     // There will be three drop down's beside three image's that display
     // selected part of robot
+    // first draft
 	
 	public function index()
 	{

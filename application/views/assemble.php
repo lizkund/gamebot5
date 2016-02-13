@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 /**
- * The Assemble Bots Page
+ * The Assemble Bots Page - first draft
  */
 ?>
 <div id="FinishedProduct">
