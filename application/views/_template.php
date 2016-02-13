@@ -6,8 +6,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title>{title}</title>
+		<title>{pageTitle} | {site-title}</title>
 		<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+		<link rel="shortcut icon" type="image/png" href="{appRoot}/images/favicon.png" />
 		<link href="{appRoot}/css/style.css" rel="stylesheet" type="text/css"/>
 		<link href="{appRoot}/css/button.css" rel="stylesheet" type="text/css"/>
 		<link href="{appRoot}/css/tablet.css" rel="stylesheet" type="text/css"/>
@@ -15,9 +16,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</head>
 	<body>
 		<header>
-			<h1 id='header-in'>
-				{site-title}
-			</h1>
+			<div id='header-in'>
+				<a href="{appRoot}/">
+					<img src="{appRoot}/images/banner.png"/>
+				</a>
+			</div>
 		</header>
 		<nav id='navigation'>
 			{menubar}
