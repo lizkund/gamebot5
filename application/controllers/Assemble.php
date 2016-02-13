@@ -1,4 +1,5 @@
 <?php
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Assemble extends Application {
@@ -9,6 +10,7 @@ class Assemble extends Application {
 	
 	public function index()
 	{
+                $this->data['pageTitle'] = 'Assemble Your Bot';
                 $this->data['pagebody'] = 'assemble';	// this is the view we want shown 
                 
                 

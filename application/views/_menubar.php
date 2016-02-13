@@ -1,10 +1,12 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /*
  * Menu navbar, just an unordered list
  */
 ?>
 <ul>
 	{menuname}
-	<li><a href="{link}">{name}</a></li>
+	<li><a href="{appRoot}{link}">{name}</a></li>
 	{/menuname}
 </ul>
