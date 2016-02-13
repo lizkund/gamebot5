@@ -1,6 +1,7 @@
 # Project Changelog
 >Template: YYYY-MM-DD HH:MM - Comment
 
+2016-02-12 17:00 - Fix autoload models.
 2016-02-12 16:35 - Fixed spacing/tab alignment in player view page.
 2016-02-12 16:30 - Removed welcome_message.php as it's not needed anymore.
 2016-02-12 16:28 - A little bit of PHP Housekeeping to prevent direct access to php files.
