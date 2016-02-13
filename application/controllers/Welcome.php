@@ -43,12 +43,12 @@ class Welcome extends Application {
 		$cards = $this->collections->all();
 		foreach ($cards as $card) {
 			$key = array_search(substr($card->Piece, 0, 2), array_column($series, 'Series'));
-			$series[$key]['Quantity']++;
+			$series[$key]['Quantity'] ++;
 		}
-		
+
 		$summary['collection'] = $series;
 
-		$this->data['botPieceSummary'] = $this->parser->parse('_pieceSummary', $summary,true);
+		$this->data['botPieceSummary'] = $this->parser->parse('_pieceSummary', $summary, true);
 
 		$this->render();
 	}
