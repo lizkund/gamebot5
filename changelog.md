@@ -1,6 +1,7 @@
 # Project Changelog
 >Template: YYYY-MM-DD HH:MM - Comment
 
+2016-02-13 21:45 - Added the ability to load custom css and js per controller/page.
 2016-02-13 18:13 - Layout for table is done
 2016-02-13 17:45 - Player Portfolio - Player Dropdown is now working.
 2016-02-13 17:20 - Player Portfolio Controller/View (Avatar, Name, Peanuts, Collection, Transactions) completed.
