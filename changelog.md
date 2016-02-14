@@ -1,6 +1,7 @@
 # Project Changelog
 >Template: YYYY-MM-DD HH:MM - Comment
 
+2016-02-13 17:20 - Player Portfolio Controller/View (Avatar, Name, Peanuts, Collection, Transactions) completed.
 2016-02-13 13:40 - Bot Piece Summary - completed
 2016-02-13 13:38 - Sitename changed
 2016-02-13 13:36 - Favicon extension changed to ico
