@@ -1,7 +1,8 @@
 # Project Changelog
 >Template: YYYY-MM-DD HH:MM - Comment
 
-2016-02-13 15:50 - Player summary - added player links
+2016-02-13 16:20 - Added captions to view tables
+2016-02-13 16:10 - Player summary - added player links
 2016-02-13 15:50 - Player summary - completed
 2016-02-13 13:40 - Bot Piece Summary - completed
 2016-02-13 13:38 - Sitename changed
