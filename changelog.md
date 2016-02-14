@@ -1,6 +1,7 @@
 # Project Changelog
 >Template: YYYY-MM-DD HH:MM - Comment
 
+2016-02-14 13:45 - Generic bot images are grayed out with a question mark on it
 2016-02-14 02:45 - Optimized the MySQL/MariaDB initial db setup.
 2016-02-14 00:49 - Each page will load its own CSS
 2016-02-14 00:00 - Turned on and configured CI Sessions (via DB Driver)
