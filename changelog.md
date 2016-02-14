@@ -1,7 +1,9 @@
 # Project Changelog
 >Template: YYYY-MM-DD HH:MM - Comment
 
+2016-02-14 02:45 - Optimized the MySQL/MariaDB initial db setup.
 2016-02-14 00:49 - Each page will load its own CSS
+2016-02-14 00:00 - Turned on and configured CI Sessions (via DB Driver)
 2016-02-13 23:05 - Adjusted some initial commenting in some files
 2016-02-13 22:45 - Temporarily assigned Donald to be the player to load when none are specified
 2016-02-13 21:45 - Added the ability to load custom css and js per controller/page.
