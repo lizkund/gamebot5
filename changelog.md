@@ -1,16 +1,14 @@
 # Project Changelog
 >Template: YYYY-MM-DD HH:MM - Comment
 
-2016-02-14 13:45 - Generic bot images are grayed out with a question mark on it
+2016-02-14 15:30 - Generic bot images are grayed out with a question mark on it. Some other pages formatted.
 2016-02-14 02:45 - Optimized the MySQL/MariaDB initial db setup.
-2016-02-14 02:38 - Login form is styled and appropriate messages are added.
-2016-02-14 02:32 - Button CSS is changed
-2016-02-14 01:45 - Login form created.
 2016-02-14 00:49 - Each page will load its own CSS
 2016-02-14 00:00 - Turned on and configured CI Sessions (via DB Driver)
 2016-02-13 23:05 - Adjusted some initial commenting in some files
 2016-02-13 22:45 - Temporarily assigned Donald to be the player to load when none are specified
 2016-02-13 21:45 - Added the ability to load custom css and js per controller/page.
+2016-02-13 20:23 - Assembly page done, and all it's supplementary pages
 2016-02-13 20:10 - Added generic bot images. And styled the player porfolio page.
 2016-02-13 18:13 - Layout for table is done
 2016-02-13 18:12 - Player Equity sorted in homepage
