@@ -10,12 +10,10 @@ $(document).ready(function () {
 	$('#bottom').change(function () {
 		var piece = $(this).val();
 		$('#bottomPiece').attr('src', window.location.pathname.replace("/assemble", "") + '/images/bot/' + piece + '.jpeg');
-	});
-});
 
-$(document).ready(function () {
 	$('#Assemble').click(function () {
 		$('#result').append( "Your BOT is assembled!" );
 		location.reload(true);
 	})
+	});
 });

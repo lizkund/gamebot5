@@ -51,10 +51,7 @@ class Assemble extends Application {
 		$this->data['middleOptions'] = $this->parser->parse('_assembleOption1', $options['middle'], true);
 		$this->data['bottomOptions'] = $this->parser->parse('_assembleOption1', $options['bottom'], true);
 		
-		$script['scripts'][] = array (
-			'appRoot' => $this->data['appRoot'],
-			'filename' => 'Assemble'
-		);
+		$this->pageScripts[] = "Assemble";
 		$this->data['pageScripts'] = $this->parser->parse('_js', $script, true);
 
 		$this->render();
