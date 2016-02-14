@@ -1,7 +1,12 @@
 # Project Changelog
 >Template: YYYY-MM-DD HH:MM - Comment
 
-2016-02-13 16:11 - Tables are formatted.
+2016-02-13 18:13 - Layout for table is done
+2016-02-13 17:45 - Player Portfolio - Player Dropdown is now working.
+2016-02-13 17:20 - Player Portfolio Controller/View (Avatar, Name, Peanuts, Collection, Transactions) completed.
+2016-02-13 16:20 - Added captions to view tables
+2016-02-13 16:10 - Player summary - added player links
+2016-02-13 15:50 - Player summary - completed
 2016-02-13 13:40 - Bot Piece Summary - completed
 2016-02-13 13:38 - Sitename changed
 2016-02-13 13:36 - Favicon extension changed to ico
@@ -21,7 +26,6 @@
 2016-02-12 15:43 - adjusted indentation in the view for assembly 
 2016-02-12 15:19 - Created Assemble controller and assemble view and added a CamelCase rule to ReadMe
 2016-02-12 15:13 - Banner added on the top
-2016-02-12 16:35 - Fixed spacing/tab alignment in player view page.
 2016-02-12 12:35 - Optimized getting the application path in the controller for menu links and assets.
 2016-02-12 10:50 - Fixed spacing inconsistencies / alignment formatting on some views.
 2016-02-12 10:30 - Link to css is fixed as it was suggested.
