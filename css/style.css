@@ -78,15 +78,26 @@ label {
 	text-align: left;
 }
 
+form#login{
+	position: relative;
+	width: 50%;
+	padding-bottom: 1.5em;
+}
+
 .textbox { 
 	background: transparent; 
 	border: 1px solid #999; 
 	outline:0;
 	height: 1.5em;
-	width: 90%;
+	width: 98%;
 	font-size: 12pt;
 	display: block;
-} 
+}
+
+.message {
+	margin-bottom: 0;
+	color: #002166;
+}
 
 footer {
 	width: 80%;

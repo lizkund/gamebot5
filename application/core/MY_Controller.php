@@ -92,6 +92,9 @@ class Application extends CI_Controller
 			$this->data['loadStyles'] = $this->parser->parse('__css', $styles, true);
 		}
 
+		//Display the login form
+		$this->data['loginForm'] = $this->parser->parse('_loginForm', $this->data, TRUE);
+
 		// finally, build the browser page!
 		$this->data['data'] = &$this->data;
 		$this->parser->parse('_template', $this->data);

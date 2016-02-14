@@ -1,6 +1,9 @@
 # Project Changelog
 >Template: YYYY-MM-DD HH:MM - Comment
 
+2016-02-14 02:38 - Login form is styled and appropriate messages are added.
+2016-02-14 02:32 - Button CSS is changed
+2016-02-14 01:45 - Login form created.
 2016-02-14 00:49 - Each page will load its own CSS
 2016-02-13 23:05 - Adjusted some initial commenting in some files
 2016-02-13 22:45 - Temporarily assigned Donald to be the player to load when none are specified

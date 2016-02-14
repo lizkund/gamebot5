@@ -28,7 +28,7 @@ div.content-right {
 	display: inline-block;
 }
 
-label {
+#playerDetails > p > label {
 	display: inline-block;
 	width: 90px;
 	text-align: left;

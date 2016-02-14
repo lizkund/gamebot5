@@ -83,8 +83,6 @@ class Welcome extends Application
 		$summary['collection'] = $series;
 		$this->data['botPieceSummary'] = $this->parser->parse('_pieceSummary', $summary, true);
 
-		//Display the login form
-		$this->data['loginForm'] = $this->parser->parse('_loginForm', $this->data);
 		$this->pageStyles[] = "home";
 
 		$this->render();
