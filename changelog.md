@@ -1,6 +1,7 @@
 # Project Changelog
 >Template: YYYY-MM-DD HH:MM - Comment
 
+2016-02-14 13:45 - Generic bot images are grayed out with a question mark on it
 2016-02-14 02:45 - Optimized the MySQL/MariaDB initial db setup.
 2016-02-14 02:38 - Login form is styled and appropriate messages are added.
 2016-02-14 02:32 - Button CSS is changed
