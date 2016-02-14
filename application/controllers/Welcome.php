@@ -35,7 +35,7 @@ class Welcome extends Application {
 				'link' => $this->data['appRoot'] . "/player/" . $player->Player,
 				'Player' => $player->Player,
 				'Peanuts' => $player->Peanuts,
-				'Equity' => count($this->collections->some('Player', $player->Player))
+				'Equity' => (count($this->collections->some('Player', $player->Player)) + $player->Peanuts)
 			);
 			$playersTable[] = $pRow;
 		}
