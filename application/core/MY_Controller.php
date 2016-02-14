@@ -35,7 +35,7 @@ class Application extends CI_Controller
 		 * in the INDIVIDUAL controllers where the filename 
 		 * is just the filename WITHOUT the extension
 		 */
-		$this->pageStyles = array('button', 'smartphone', 'style', 'tablet');
+		$this->pageStyles = array('button', 'smartphone', 'style', 'tablet', 'table');
 
 		/**
 		 * Add in additional JS files used (in the JS folder) by using

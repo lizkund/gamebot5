@@ -10,11 +10,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
 		<link rel="shortcut icon" type="image/ico" href="{appRoot}/images/favicon.ico" />
 		{loadStyles}
-		<!--Layout CSS for each page-->
-		<link href="{appRoot}/css/home.css" rel="stylesheet" type="text/css"/>
-		<link href="{appRoot}/css/player.css" rel="stylesheet" type="text/css"/>
-		<link href="{appRoot}/css/assemble.css" rel="stylesheet" type="text/css"/>
-		<link href="{appRoot}/css/table.css" rel="stylesheet" type="text/css"/>
 	</head>
 	<body>
 		<header>

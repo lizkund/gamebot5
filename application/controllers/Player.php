@@ -32,6 +32,8 @@ class Player extends Application {
 		$this->data['playerCards'] = $this->parser->parse('_playerCard1', $this->getPlayerCollection($name), true);
 		$this->data['playerLatestActivity'] = $this->parser->parse('_transactions', $this->getLatestActivity($name), true);
 
+		$this->pageStyles[] = "player";
+		
 		$this->render();
 	}
 
