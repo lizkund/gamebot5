@@ -2,6 +2,7 @@
 >Template: YYYY-MM-DD HH:MM - Comment
 
 2016-02-13 21:45 - Added the ability to load custom css and js per controller/page.
+2016-02-13 20:10 - Added generic bot images. And styled the player porfolio page.
 2016-02-13 18:13 - Layout for table is done
 2016-02-13 18:12 - Player Equity sorted in homepage
 2016-02-13 17:45 - Player Portfolio - Player Dropdown is now working.

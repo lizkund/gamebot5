@@ -11,7 +11,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @copyright           2010-2013, James L. Parry
  * ------------------------------------------------------------------------
  */
-class Application extends CI_Controller {
+class Application extends CI_Controller
+{
 
 	protected $data = array();   // parameters for view components
 	protected $id;  // identifier for our content
