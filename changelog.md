@@ -1,9 +1,9 @@
 # Project Changelog
 >Template: YYYY-MM-DD HH:MM - Comment
 
+2016-02-13 18:13 - Layout for table is done
 2016-02-13 18:12 - Player Equity sorted in homepage
 2016-02-13 17:45 - Player Portfolio - Player Dropdown is now working.
-2016-02-13 17:40 - Calculated equity properly
 2016-02-13 17:20 - Player Portfolio Controller/View (Avatar, Name, Peanuts, Collection, Transactions) completed.
 2016-02-13 16:20 - Added captions to view tables
 2016-02-13 16:10 - Player summary - added player links
