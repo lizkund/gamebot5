@@ -13,6 +13,9 @@ class Assemble extends Application {
 		$this->data['pageTitle'] = 'Assemble Your Bot';
 		$this->data['pagebody'] = 'assemble'; // this is the view we want shown 
 
+		
+		$this->pageStyles[] = "assemble";
+		
 		$this->render();
 	}
 

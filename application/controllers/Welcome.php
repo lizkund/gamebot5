@@ -77,6 +77,8 @@ class Welcome extends Application {
 		$summary['collection'] = $series;
 		$this->data['botPieceSummary'] = $this->parser->parse('_pieceSummary', $summary, true);
 
+		$this->pageStyles[] = "home";
+		
 		$this->render();
 	}
 
