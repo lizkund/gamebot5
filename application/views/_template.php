@@ -9,16 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<title>{pageTitle} | {site-title}</title>
 		<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
 		<link rel="shortcut icon" type="image/ico" href="{appRoot}/images/favicon.ico" />
-		<!--Global Template CSS-->
-		<link href="{appRoot}/css/style.css" rel="stylesheet" type="text/css"/>
-		<link href="{appRoot}/css/button.css" rel="stylesheet" type="text/css"/>
-		<link href="{appRoot}/css/tablet.css" rel="stylesheet" type="text/css"/>
-		<link href="{appRoot}/css/smartphone.css" rel="stylesheet" type="text/css"/>
-		
-		<!--Layout CSS for each page-->
-		<link href="{appRoot}/css/home.css" rel="stylesheet" type="text/css"/>
-		<link href="{appRoot}/css/player.css" rel="stylesheet" type="text/css"/>
-		<link href="{appRoot}/css/assemble.css" rel="stylesheet" type="text/css"/>
+		{loadStyles}
 	</head>
 	<body>
 		<header>
@@ -44,6 +35,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</body>
 	<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
 	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
-	<!-- Load Custom Script per page here if any-->
-	{pageScripts}
+	{loadScripts}
 </html>

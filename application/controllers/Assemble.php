@@ -12,6 +12,8 @@ class Assemble extends Application {
 	public function index() {
 		$this->data['pageTitle'] = 'Assemble Your Bot';
 		$this->data['pagebody'] = 'assemble'; // this is the view we want shown 
+		$this->pageScripts[] = "assemble";
+		$this->pageStyles[] = "assemble";
 
 		$player = "George";
 
@@ -51,9 +53,6 @@ class Assemble extends Application {
 		$this->data['middleOptions'] = $this->parser->parse('_assembleOption1', $options['middle'], true);
 		$this->data['bottomOptions'] = $this->parser->parse('_assembleOption1', $options['bottom'], true);
 		
-		$this->pageScripts[] = "Assemble";
-		$this->data['pageScripts'] = $this->parser->parse('_js', $script, true);
-
 		$this->render();
 	}
 
