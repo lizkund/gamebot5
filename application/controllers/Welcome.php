@@ -2,7 +2,8 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends Application {
+class Welcome extends Application
+{
 
 	/**
 	 * Index Page for this controller.
@@ -19,7 +20,8 @@ class Welcome extends Application {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index() {
+	public function index()
+	{
 		$this->data['pagebody'] = 'home'; // this is the view we want shown
 		$this->data['gameStatus'] = "Offline - Currently under development";
 
@@ -29,7 +31,8 @@ class Welcome extends Application {
 		$table = $this->series->all();
 
 		$playersTable = array();
-		foreach ($players as $player) {
+		foreach ($players as $player)
+		{
 			$pRow = array(
 				//calling the columns from the database players column
 				'link' => $this->data['appRoot'] . "/player/" . $player->Player,
@@ -42,7 +45,8 @@ class Welcome extends Application {
 		}
 
 		// Obtain a list of columns
-		foreach ($playersTable as $key => $row) {
+		foreach ($playersTable as $key => $row)
+		{
 			$equity[$key] = $row['Equity'];
 			$name[$key] = $row['Player'];
 		}
@@ -56,7 +60,8 @@ class Welcome extends Application {
 		$this->data['playerInfo'] = $this->parser->parse('_playerinfo1', $PlayerSummary, true);
 
 		$series = array();
-		foreach ($table as $type) {
+		foreach ($table as $type)
+		{
 			$row = array(
 				//calling the columns from the database series column
 				'Series' => $type->Series,
@@ -69,7 +74,8 @@ class Welcome extends Application {
 		}
 
 		// Get all cards in db
-		foreach ($cards as $card) {
+		foreach ($cards as $card)
+		{
 			$key = array_search(substr($card->Piece, 0, 2), array_column($series, 'Series'));
 			$series[$key]['Quantity'] ++;
 		}
@@ -77,8 +83,10 @@ class Welcome extends Application {
 		$summary['collection'] = $series;
 		$this->data['botPieceSummary'] = $this->parser->parse('_pieceSummary', $summary, true);
 
+		//Display the login form
+		$this->data['loginForm'] = $this->parser->parse('_loginForm', $this->data);
 		$this->pageStyles[] = "home";
-		
+
 		$this->render();
 	}
 

@@ -24,6 +24,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</nav>
 		<div id="container">
 			<div id="content">
+				<form id="login">
+					{loginForm}
+				</form>
 				<div id='content-in'>
 					{content}
 				</div>
