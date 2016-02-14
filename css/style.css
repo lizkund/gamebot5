@@ -76,16 +76,17 @@ div#header-in > a > img{
 }
 label {
 	text-align: left;
+	color: white;
 }
 
-form#login{
+form.login{
 	position: relative;
-	width: 50%;
-	padding-bottom: 1.5em;
+	width: 35%;
+	float:right;
+	padding-top: 1em;
 }
 
 .textbox { 
-	background: transparent; 
 	border: 1px solid #999; 
 	outline:0;
 	height: 1.5em;

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 /**
- * A Table row for Player Stat Summary
+ * Welcome message for logged in users
  */
 ?>
 <p class="message">Welcome back, {player}!</p>
