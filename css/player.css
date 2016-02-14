@@ -32,6 +32,7 @@ div.content-right {
 	display: inline-block;
 	width: 90px;
 	text-align: left;
+	color: #3f312e;
 }
 
 #playerDetails > p {
