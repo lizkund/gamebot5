@@ -32,6 +32,7 @@ class Welcome extends Application {
 		foreach ($players as $player) {
 			$pRow = array(
 				//calling the columns from the database players column
+				'link' => $this->data['appRoot'] . "/player/" . $player->Player,
 				'Player' => $player->Player,
 				'Peanuts' => $player->Peanuts,
 				'Equity' => count($this->collections->some('Player', $player->Player))
