@@ -9,9 +9,11 @@ class Assemble extends Application {
 	// selected part of robot
 	// first draft
 
-	public function index() {
+	public function index()
+	{
 		$this->data['pageTitle'] = 'Assemble Your Bot';
 		$this->data['pagebody'] = 'assemble'; // this is the view we want shown 
+		$this->data['addScript'][] = "Assemble";
 
 		$this->render();
 	}
