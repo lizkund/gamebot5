@@ -44,4 +44,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</body>
 	<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
 	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
+	<!-- Load Custom Script per page here if any-->
+	{pageScripts}
 </html>

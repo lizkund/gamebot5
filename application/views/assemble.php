@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 /**
- * The Assemble Bots Page - first draft
+ * The Assemble Bots Page
  */
 ?>
 
@@ -9,45 +9,45 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<table>
 		<tr>
 			<td>
-				<!--some jQuery should go in here
-					display the selected part from corresponding dropdown -->
-				<image id="botHead" src="../images/bot/11b-0.jpeg">
+				<image id="topPiece" src="{appRoot}/images/bot/11b-0.jpeg">
 			</td>
 			<td>
 				<p>Top Piece</p>
-				<select>
+				<select id="top">
 					{topOptions}
 				</select>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<image id="botBody" src="../images/bot/11b-1.jpeg">
+				<image id="middlePiece" src="{appRoot}/images/bot/11b-1.jpeg">
 			</td>
 			<td>
 				<p>Middle Piece</p>
-				<select>
+				<select id="middle">
 					{middleOptions}
 				</select>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<image id="botLeg" src="../images/bot/11b-2.jpeg" />
+				<image id="bottomPiece" src="{appRoot}/images/bot/11b-2.jpeg" />
 			</td>
 			<td>
 				<p>Bottom Piece</p>
-				<select>
+				<select id="bottom">
 					{bottomOptions}
 				</select>
 			</td>
 		</tr>
 	</table>
-
-	<!--{BotAssembled}-->
 </div>
 
 
 <div id="Assemble">
 	<button type="button">Assemble</button>
+</div>
+
+<div id="assembleResult">
+	<span id="result"></span>
 </div>
