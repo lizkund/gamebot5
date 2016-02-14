@@ -24,7 +24,7 @@ class Player extends Application {
 		}
 		$this->data['pageTitle'] = 'Player Portfolios';
 		$this->data['pagebody'] = 'player'; // this is the view we want shown
-		
+
 		$this->data['playerName'] = $name;
 		$this->data['players'] = $this->parser->parse('_playerSelect1', $this->getPlayers(), true);
 		$this->data['avatar'] = $this->getAvatar($name);
@@ -34,18 +34,20 @@ class Player extends Application {
 
 		$this->render();
 	}
-	
-	function getPlayers() {
-		
+
+	function getPlayers()
+	{
+
 		$tablePlayers = $this->players->all();
-		
+
 		$options = array();
-		foreach ($tablePlayers as $player) {
+		foreach ($tablePlayers as $player)
+		{
 			$options[]['player'] = $player->Player;
 		}
-		
+
 		$players['options'] = $options;
-		
+
 		return $players;
 	}
 
