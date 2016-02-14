@@ -5,5 +5,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 ?>
 {options}
-<option value="{player}">{player}</option>
+<option value="{link}" {selected}>{player}</option>
 {/options}

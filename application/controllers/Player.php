@@ -43,7 +43,14 @@ class Player extends Application {
 		$options = array();
 		foreach ($tablePlayers as $player)
 		{
-			$options[]['player'] = $player->Player;
+			$option['player'] = $player->Player;
+			$option['link'] = $this->data['appRoot'] . "/player/" . $player->Player;
+			if ($_SERVER['PATH_INFO'] == ("/player/" . $player->Player)) {
+				$option['selected'] = "selected=\"selected\"";
+			} else {
+				$option['selected'] = "";
+			}
+			$options[] = $option;
 		}
 
 		$players['options'] = $options;
