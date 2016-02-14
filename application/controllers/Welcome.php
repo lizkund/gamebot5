@@ -41,7 +41,8 @@ class Welcome extends Application {
 
 		// Get all cards in db
 		$cards = $this->collections->all();
-		foreach ($cards as $card) {
+		foreach ($cards as $card) 
+		{
 			$key = array_search(substr($card->Piece, 0, 2), array_column($series, 'Series'));
 			$series[$key]['Quantity'] ++;
 		}
