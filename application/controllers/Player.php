@@ -20,7 +20,7 @@ class Player extends Application {
 	{
 		if (is_null($name) || $name == "" || !$this->players->exists($name))
 		{
-			//redirect($this->data['appRoot'] . '/');
+			$name = "Donald";
 		}
 		$this->data['pageTitle'] = 'Player Portfolios';
 		$this->data['pagebody'] = 'player'; // this is the view we want shown
