@@ -37,8 +37,19 @@ class Welcome extends Application {
 				'Peanuts' => $player->Peanuts,
 				'Equity' => (count($this->collections->some('Player', $player->Player)) + $player->Peanuts)
 			);
+
 			$playersTable[] = $pRow;
 		}
+
+		// Obtain a list of columns
+		foreach ($playersTable as $key => $row) {
+			$equity[$key] = $row['Equity'];
+			$name[$key] = $row['Player'];
+		}
+
+		// Sort the data with equity descending, player name ascending
+		// Add $playersTable as the last parameter, to sort by the common key
+		array_multisort($equity, SORT_DESC, $name, SORT_ASC, $playersTable);
 
 
 		$PlayerSummary['Players'] = $playersTable;
@@ -65,8 +76,6 @@ class Welcome extends Application {
 
 		$summary['collection'] = $series;
 		$this->data['botPieceSummary'] = $this->parser->parse('_pieceSummary', $summary, true);
-
-
 
 		$this->render();
 	}
