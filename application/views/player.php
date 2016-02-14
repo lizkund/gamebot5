@@ -38,7 +38,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</table>
 		</div>
 
-
 		<div id="latestActivity">
 			<table class="responstable">
 				<caption>Player Transaction History</caption>
