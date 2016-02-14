@@ -3,9 +3,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * Data access wrapper for "orders" table.
+ * Data access wrapper for "Collections" table.
  *
- * @author jim
  */
 class Collections extends MY_Model {
 

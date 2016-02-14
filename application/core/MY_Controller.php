@@ -7,9 +7,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *
  * Default application controller
  *
- * @author		JLP
- * @copyright           2010-2013, James L. Parry
- * ------------------------------------------------------------------------
  */
 class Application extends CI_Controller
 {
@@ -35,7 +32,8 @@ class Application extends CI_Controller
 		 * 
 		 * 		$this->pageStyles[] = "filename";
 		 * 
-		 * where the filename is just the filename without the extension
+		 * in the INDIVIDUAL controllers where the filename 
+		 * is just the filename WITHOUT the extension
 		 */
 		$this->pageStyles = array('button', 'smartphone', 'style', 'tablet');
 
@@ -44,7 +42,8 @@ class Application extends CI_Controller
 		 * 
 		 * 		$this->pageScripts[] = "filename";
 		 * 
-		 * where the filename is just the filename without the extension
+		 * in the INDIVIDUAL controllers where the filename 
+		 * is just the filename WITHOUT the extension
 		 */
 		$this->pageScripts = array();
 	}

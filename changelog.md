@@ -1,6 +1,7 @@
 # Project Changelog
 >Template: YYYY-MM-DD HH:MM - Comment
 
+2016-02-13 23:05 - Adjusted some initial commenting in some files
 2016-02-13 22:45 - Temporarily assigned Donald to be the player to load when none are specified
 2016-02-13 21:45 - Added the ability to load custom css and js per controller/page.
 2016-02-13 20:10 - Added generic bot images. And styled the player porfolio page.
