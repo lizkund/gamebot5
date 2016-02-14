@@ -16,6 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div id="bot_summary">
 	<table>
+		<caption>Bot Piece Summary</caption>
 		<thead>
 			<tr>
 				<th>Bot Series</th>
@@ -32,6 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <div id="player_info">
 	<table>
+		<caption>Player Summary</caption>
 		<thead>
 			<tr>
 				<th>Name</th>
