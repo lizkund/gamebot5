@@ -19,6 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<link href="{appRoot}/css/home.css" rel="stylesheet" type="text/css"/>
 		<link href="{appRoot}/css/player.css" rel="stylesheet" type="text/css"/>
 		<link href="{appRoot}/css/assemble.css" rel="stylesheet" type="text/css"/>
+		<link href="{appRoot}/css/table.css" rel="stylesheet" type="text/css"/>
 	</head>
 	<body>
 		<header>

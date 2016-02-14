@@ -68,8 +68,7 @@ div#header-in > a > img{
 	width: 98.5%;
 	float: left;
 	margin: 0 auto;
-	padding-top: 1em;
-	padding-left: 1em;
+	padding: 1em 0 1em 1em;
 }
 #content-in h1 { 
 	font-size: 2em; 
