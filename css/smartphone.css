@@ -104,6 +104,14 @@
 	nav > ul > li.has-sub.active > a span {
 		background: url(../images/icon_minus.png) 96% center no-repeat;
 	}
+	.message {
+		font-size: 1.2em;
+	}
+
+	footer { 
+		width: 95%;
+		margin: 0 auto;
+	}
 }
 
 /* Smartphones */
@@ -268,9 +276,5 @@
 	}
 	aside, .desktop {
 		display: none;
-	}
-	footer { 
-		width: auto;
-
 	}
 }

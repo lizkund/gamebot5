@@ -116,7 +116,7 @@ class Application extends CI_Controller
 				{
 					$this->session->username = $username;
 					$player['player'] = $this->session->username;
-					if (!$this->players->exists($this->session->username))
+					if (!$this->players->exists($username))
 					{
 						$this->players->add($player);
 					}
