@@ -15,7 +15,8 @@
 		width: 100%; 
 	}
 	nav {
-		width: 95%; 
+		width: 95%;
+		margin: 0 auto;
 	}
 
 	#container {
@@ -23,17 +24,12 @@
 		padding: 10px;
 		padding-bottom: 5px;
 	}
+	
 	#content { 
 		width: 100%; 
 	}
-	#contentleft { 
-		width: 65%; 
-		margin-right: 2em; 
-		padding: 1.2em; 
-	}
-	#contentleft h1 { 
-		font-size: 1.75em; 
-	}
+
+
 	footer {
 		width: 95%;
 	}
