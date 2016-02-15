@@ -118,7 +118,9 @@ class Application extends CI_Controller
 					$player['player'] = $this->session->username;
 					if (!$this->players->exists($username))
 					{
-						$this->players->add($this->session->username);
+						$this->players->add(array(
+							"Player" => $this->session->username)
+						);
 					}
 					$display = $this->parser->parse('_loggedIn', $player, true);
 				}
