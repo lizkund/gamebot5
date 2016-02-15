@@ -11,10 +11,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<td>
 				<image id="topPiece" src="{appRoot}/images/bot/gen-0.png">
 			</td>
-			<td>
+			<td class="select">
 				<p>Top Piece</p>
 				<select id="top">
-					<option value="choose" selected="selected" disabled="disabled">Select a Top Piece</option>
+					<option value="" selected="selected" disabled="disabled">Select a Top Piece</option>
 					{topOptions}
 				</select>
 			</td>
@@ -23,10 +23,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<td>
 				<image id="middlePiece" src="{appRoot}/images/bot/gen-1.png">
 			</td>
-			<td>
+			<td class="select">
 				<p>Middle Piece</p>
 				<select id="middle">
-					<option value="choose" selected="selected" disabled="disabled">Select a Middle Piece</option>
+					<option value="" selected="selected" disabled="disabled">Select a Middle Piece</option>
 					{middleOptions}
 				</select>
 			</td>
@@ -35,10 +35,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<td>
 				<image id="bottomPiece" src="{appRoot}/images/bot/gen-2.png" />
 			</td>
-			<td>
+			<td class="select">
 				<p>Bottom Piece</p>
 				<select id="bottom">
-					<option value="choose" selected="selected" disabled="disabled">Select a Bottom Piece</option>
+					<option value="" selected="selected" disabled="disabled">Select a Bottom Piece</option>
 					{bottomOptions}
 				</select>
 			</td>
@@ -48,7 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 <div id="Assemble">
-	<button type="button">Assemble</button>
+	<button type="button" disabled="disabled" id="btnAssemble">Assemble</button>
 </div>
 
 <div id="assembleResult">

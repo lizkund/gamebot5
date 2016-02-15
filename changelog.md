@@ -1,6 +1,7 @@
 # Project Changelog
 >Template: YYYY-MM-DD HH:MM - Comment
 
+2016-02-14 23:25 - Optimized jQuery script in Assemble.
 2016-02-14 23:11 - Logged in text and button is aligned next to each other
 2016-02-14 22:15 - SQL Player Fix Default Peanut to 100
 2016-02-14 21:07 - Minor changes to the CSS
