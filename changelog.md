@@ -1,6 +1,9 @@
 # Project Changelog
 >Template: YYYY-MM-DD HH:MM - Comment
 
+2016-02-14 17:55 - User Sessions Integration!
+2016-02-14 17:00 - Bug Fix on Assemble Button
+2016-02-14 16:30 - Bug fix / enhancement for Assemble Dropdowns.
 2016-02-14 15:30 - Generic bot images are grayed out with a question mark on it. Some other pages formatted.
 2016-02-14 02:45 - Optimized the MySQL/MariaDB initial db setup.
 2016-02-14 00:49 - Each page will load its own CSS

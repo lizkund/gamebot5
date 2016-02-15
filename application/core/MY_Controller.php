@@ -8,8 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Default application controller
  *
  */
-class Application extends CI_Controller
-{
+class Application extends CI_Controller {
 
 	protected $data = array();   // parameters for view components
 	protected $id;  // identifier for our content
@@ -47,6 +46,8 @@ class Application extends CI_Controller
 		 * is just the filename WITHOUT the extension
 		 */
 		$this->pageScripts = array();
+
+		$this->userSession();
 	}
 
 	/**
@@ -61,9 +62,11 @@ class Application extends CI_Controller
 			$record['appRoot'] = $this->data['appRoot'];
 			$tempMenu['menuname'][] = $record;
 		}
+		$tempMenu['userSession'] = $this->data['userSession'];
+
 
 		$this->data['menubar'] = $this->parser->parse('_menubar', $tempMenu, true);
-		$this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
+
 
 		$this->data['loadScripts'] = "";
 		if (!empty($this->pageScripts))
@@ -92,12 +95,46 @@ class Application extends CI_Controller
 			$this->data['loadStyles'] = $this->parser->parse('__css', $styles, true);
 		}
 
-		//Display the login form
-		$this->data['loginForm'] = $this->parser->parse('_loginForm', $this->data, TRUE);
-
+		$this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
 		// finally, build the browser page!
 		$this->data['data'] = &$this->data;
 		$this->parser->parse('_template', $this->data);
+	}
+
+	function userSession()
+	{
+		$display = $this->load->view('_loginForm', '', true);
+		if (is_null($this->session->username))
+		{
+			// No username set in session
+			if (!is_null($this->input->post('login')))
+			{
+				// login button clicked
+				$username = $this->input->post('username');
+				if ($username != "")
+				{
+					$this->session->username = $username;
+					$player['player'] = $this->session->username;
+					$display = $this->parser->parse('_loggedIn', $player, true);
+				}
+			}
+		} else
+		{
+			// Username in session
+			if (!is_null($this->input->post('logout')))
+			{
+				// logout button clicked
+				unset($_SESSION['username']);
+				$display = $this->load->view('_loginForm', '', true);
+			} else
+			{
+
+				$player['player'] = $this->session->username;
+				$display = $this->parser->parse('_loggedIn', $player, true);
+			}
+		}
+
+		$this->data['userSession'] = $display;
 	}
 
 }
