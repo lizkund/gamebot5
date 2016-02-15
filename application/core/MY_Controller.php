@@ -8,7 +8,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Default application controller
  *
  */
-class Application extends CI_Controller {
+class Application extends CI_Controller
+{
 
 	protected $data = array();   // parameters for view components
 	protected $id;  // identifier for our content
@@ -114,6 +115,10 @@ class Application extends CI_Controller {
 				if ($username != "")
 				{
 					$this->session->username = $username;
+					if (!$this->players->exists($this->session->username))
+					{
+						$this->players->add($this->players->data($this->session->username));
+					}
 					$player['player'] = $this->session->username;
 					$display = $this->parser->parse('_loggedIn', $player, true);
 				}
