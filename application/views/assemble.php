@@ -14,6 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<td>
 				<p>Top Piece</p>
 				<select id="top">
+					<option value="choose" selected="selected" disabled="disabled">Select a Top Piece</option>
 					{topOptions}
 				</select>
 			</td>
@@ -25,6 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<td>
 				<p>Middle Piece</p>
 				<select id="middle">
+					<option value="choose" selected="selected" disabled="disabled">Select a Middle Piece</option>
 					{middleOptions}
 				</select>
 			</td>
@@ -36,6 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<td>
 				<p>Bottom Piece</p>
 				<select id="bottom">
+					<option value="choose" selected="selected" disabled="disabled">Select a Bottom Piece</option>
 					{bottomOptions}
 				</select>
 			</td>
