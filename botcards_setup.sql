@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 DROP TABLE IF EXISTS `players`;
 CREATE TABLE IF NOT EXISTS `players` (
 	`Player`	VARCHAR(25)					NOT NULL,
-	`Peanuts`	INT(5)		DEFAULT 200		NOT NULL,
+	`Peanuts`	INT(5)		DEFAULT 100		NOT NULL,
 	CONSTRAINT `players_pk`
 		PRIMARY KEY (`Player`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
