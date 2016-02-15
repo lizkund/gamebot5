@@ -111,8 +111,8 @@ class Application extends CI_Controller
 			if (!is_null($this->input->post('login')))
 			{
 				// login button clicked
-				$username = $this->input->post('username');
-				if ($username != "")
+				$username = ucwords(strtolower($this->input->post('username')));
+				if ($username != "" && !is_null($username))
 				{
 					$this->session->username = $username;
 					$player['player'] = $this->session->username;
