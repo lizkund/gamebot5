@@ -1,6 +1,7 @@
 # Project Changelog
 >Template: YYYY-MM-DD HH:MM - Comment
 
+2016-02-14 21:07 - Minor changes to the CSS
 2016-02-14 18:09 - Pages (Home and Player) are responsive
 2016-02-14 17:55 - User Sessions Integration!
 2016-02-14 17:00 - Bug Fix on Assemble Button

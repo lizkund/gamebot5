@@ -65,10 +65,9 @@ div#header-in > a > img{
 	overflow: auto;
 }
 #content-in {
-	width: 98.5%;
-	float: left;
+	width: 95%;
 	margin: 0 auto;
-	padding: 1em 0 1em 1em;
+	padding: 1em 0 1em 0;
 }
 #content-in h1 { 
 	font-size: 2em; 
@@ -95,9 +94,20 @@ form.login{
 	display: block;
 }
 
+#logged{
+	float: right;
+	margin-right: 15px;
+}
+
 .message {
-	margin-bottom: 0;
-	color: #002166;
+	margin: 5px 0 5px 0;
+	color: white;
+	position: relative;
+	display: inline-block;
+}
+
+#logged > form {
+	text-align: right;
 }
 
 footer {
