@@ -21,7 +21,7 @@ class Welcome extends Application {
 	 */
 	public function index() {
 		$this->data['pagebody'] = 'home'; // this is the view we want shown
-		$this->data['gameStatus'] = "Offline - Currently under development";
+		$this->data['gameStatus'] = "Offline - Currently under development"; // Something to be better implemented later on.
 
 		//get the data from all tables
 		$players = $this->players->all();
@@ -74,10 +74,11 @@ class Welcome extends Application {
 			$series[$key]['Quantity'] ++;
 		}
 
+		// prep for ci parser
 		$summary['collection'] = $series;
 		$this->data['botPieceSummary'] = $this->parser->parse('_pieceSummary', $summary, true);
 
-		$this->pageStyles[] = "home";
+		$this->pageStyles[] = "home"; // Page-specific style to load
 		
 		$this->render();
 	}

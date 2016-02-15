@@ -5,10 +5,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 ?>
 <div id="playerSelect">
-	Select a player to view
+	Currently viewing player details for: 
 	<select onchange="window.location.href = this.value">
 		{players}
 	</select>
+	Select another player to view their details
 </div>
 <div class="center">
 	<div class="contentleft">

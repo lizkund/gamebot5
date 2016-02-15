@@ -18,57 +18,95 @@ class Player extends Application {
 	 */
 	public function index($name = null)
 	{
+		// Check if player name was passed in or not
 		if (is_null($name) || $name == "")
 		{
+			// Check if username exist
 			if (!is_null($this->session->username))
 			{
+				// Username exists; user logged in
 				$name = $this->session->username;
-			} else
+			}
+		} else
+		{
+			// Username passed through index parameter
+			// Check if username exists in db AND is logged in
+			if (!$this->players->exists($name) || is_null($this->session->username))
 			{
-				$name = "Donald";
+				// send back to initial player page
+				redirect('/player');
 			}
 		}
 
-		$this->data['pageTitle'] = 'Player Portfolios';
+		$this->data['pageTitle'] = 'Player Portfolios'; // Page Title
 		$this->data['pagebody'] = 'player'; // this is the view we want shown
 
-		$this->data['playerName'] = $name;
-		$this->data['players'] = $this->parser->parse('_playerSelect1', $this->getPlayers(), true);
-		$this->data['avatar'] = $this->getAvatar($name);
-		$this->data['peanuts'] = $this->getPeanuts($name);
-		$this->data['playerCards'] = $this->parser->parse('_playerCard1', $this->getPlayerCollection($name), true);
-		$this->data['playerLatestActivity'] = $this->parser->parse('_transactions', $this->getLatestActivity($name), true);
 
+		if (is_null($name))
+		{
+			// Display message instead of regular page
+			$this->data['staticMessage'] = "We're sorry, but at this time only registered users can view other player details.  Simply register/login in the navigation bar to continue.";
+			$this->data['pagebody'] = "_message";
+		} else
+		{
+			// Username exists and in db
+			$this->data['playerName'] = $name;
+			$this->data['players'] = $this->parser->parse('_playerSelect1', $this->getPlayers(), true);
+			$this->data['avatar'] = $this->getAvatar($name);
+			$this->data['peanuts'] = $this->getPeanuts($name);
+			$this->data['playerCards'] = $this->parser->parse('_playerCard1', $this->getPlayerCollection($name), true);
+			$this->data['playerLatestActivity'] = $this->parser->parse('_transactions', $this->getLatestActivity($name), true);
+		}
+
+		// Page-specific style to load
 		$this->pageStyles[] = "player";
 
+		// Render Page!
 		$this->render();
 	}
 
+	//Gets all the players and transform it for CI to parse into a dropdown template
 	function getPlayers()
 	{
-
+		// Get all players from db
 		$tablePlayers = $this->players->all();
 
 		$options = array();
 		foreach ($tablePlayers as $player)
 		{
+			// Set one dropdown option
 			$option['player'] = $player->Player;
 			$option['link'] = $this->data['appRoot'] . "/player/" . $player->Player;
-			if ($_SERVER['PATH_INFO'] == ("/player/" . $player->Player))
+
+			// Check for selected/disabled
+			$check0 = $_SERVER['PATH_INFO'] == ("/player/");
+			$check1 = $_SERVER['PATH_INFO'] == ("/player/" . $player->Player);
+			$check2 = $this->session->username == $player->Player;
+
+			if ($check0 && $check2)
 			{
-				$option['selected'] = "selected=\"selected\"";
+				// no specific player is listed, and user is logged in and is the currently generating name
+				$option['selected'] = "selected=\"selected\" disabled=\"disabled\"";
+			} elseif ($check1)
+			{
+				// Specific player specified in URL and is the currently generating name
+				$option['selected'] = "selected=\"selected\" disabled=\"disabled\"";
 			} else
 			{
+				// Otherwise, replace the parser {selected} with an empty string
 				$option['selected'] = "";
 			}
+			// add a player's dropdown option to overall list
 			$options[] = $option;
 		}
 
+		// Make it ready for CI parser
 		$players['options'] = $options;
 
 		return $players;
 	}
 
+	//Retrive a user's Avatar from the DB (to be implented in the future)
 	function getAvatar($name = null)
 	{
 //		if (is_null($name) || $name == "" || !$this->players->exists($name))
@@ -80,11 +118,14 @@ class Player extends Application {
 //			// Name is given and exists, grab that player's peanut count
 //			return $this->players->get($name)->Avatar;
 //		}
+		// To be implemented properly in a later version.  For now, everyone gets a generic avatar
 		return $this->data['appRoot'] . "/images/generic_photo.png";
 	}
 
+	//Get Player Peanut count
 	function getPeanuts($name = null)
 	{
+		// Check if username is provided, and if they exist in the db
 		if (is_null($name) || $name == "" || !$this->players->exists($name))
 		{
 			// Unregistered user
@@ -96,6 +137,7 @@ class Player extends Application {
 		}
 	}
 
+	// Get all player cards
 	function getPlayerCollection($name = null)
 	{
 		if (is_null($name) || $name == "" || !$this->players->exists($name))
@@ -109,15 +151,19 @@ class Player extends Application {
 			$collection = array();
 			foreach ($tableCollections as $type)
 			{
+				// Just extract each Piece into a new array (may contain duplicates)
 				$collection[] = $type->Piece;
 			}
 
+			// Count all values.  Unique Piece key with quantity as value
 			$partCount = array_count_values($collection);
-			ksort($partCount);
+			// An attempt at sorting the array by key
+			ksort($partCount, SORT_NATURAL);
 
 			$cardList = array();
 			foreach ($partCount as $key => $value)
 			{
+				// Extract Bot Card Data
 				$row['Series'] = substr($key, 0, 2);
 				$row['Type'] = substr($key, 2, 1);
 				switch (substr($key, -1, 1))
@@ -132,16 +178,19 @@ class Player extends Application {
 						$row['Part'] = "Bottom";
 						break;
 				}
+				// Quantity of this card
 				$row['Quantity'] = $value;
 				$cardList[] = $row;
 			}
 
+			// prep for CI parser
 			$result['pCards'] = $cardList;
 
 			return $result;
 		}
 	}
 
+	// Get Player Activities (all)
 	function getLatestActivity($name = null)
 	{
 		if (is_null($name) || $name == "" || !$this->players->exists($name))
@@ -156,6 +205,7 @@ class Player extends Application {
 			$history = array();
 			foreach ($tableTransactions as $type)
 			{
+				// Translate from object into parsing array
 				$row['Timestamp'] = $type->DateTime;
 				$row['Trans'] = $type->Trans;
 				switch ($type->Trans)
@@ -194,11 +244,14 @@ class Player extends Application {
 						$row['Action'] = "Unknown Transaction Type.";
 						break;
 				}
+				// Add transaction history to array
 				$history[] = $row;
 			}
 
+			// Sort by most recent
 			array_multisort($history, SORT_DESC);
 
+			// prep for CI parser
 			$result['transactions'] = $history;
 
 			return $result;
