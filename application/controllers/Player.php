@@ -16,10 +16,19 @@ class Player extends Application {
 	 * map to /index.php/player/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index($name = 'unregistered') {
-		if (is_null($name) || $name == "" || !$this->players->exists($name)) {
-			$name = "Donald";
+	public function index($name = null)
+	{
+		if (is_null($name) || $name == "")
+		{
+			if (!is_null($this->session->username))
+			{
+				$name = $this->session->username;
+			} else
+			{
+				$name = "Donald";
+			}
 		}
+
 		$this->data['pageTitle'] = 'Player Portfolios';
 		$this->data['pagebody'] = 'player'; // this is the view we want shown
 
@@ -35,18 +44,20 @@ class Player extends Application {
 		$this->render();
 	}
 
-	function getPlayers() {
+	function getPlayers()
+	{
 
 		$tablePlayers = $this->players->all();
 
 		$options = array();
-		foreach ($tablePlayers as $player) {
+		foreach ($tablePlayers as $player)
+		{
 			$option['player'] = $player->Player;
 			$option['link'] = $this->data['appRoot'] . "/player/" . $player->Player;
-			if ($_SERVER['PATH_INFO'] == ("/player/" . $player->Player)) 
+			if ($_SERVER['PATH_INFO'] == ("/player/" . $player->Player))
 			{
 				$option['selected'] = "selected=\"selected\"";
-			} else 
+			} else
 			{
 				$option['selected'] = "";
 			}
@@ -58,7 +69,8 @@ class Player extends Application {
 		return $players;
 	}
 
-	function getAvatar($name = null) {
+	function getAvatar($name = null)
+	{
 //		if (is_null($name) || $name == "" || !$this->players->exists($name))
 //		{
 //			// Unregistered user
@@ -71,25 +83,32 @@ class Player extends Application {
 		return $this->data['appRoot'] . "/images/generic_photo.png";
 	}
 
-	function getPeanuts($name = null) {
-		if (is_null($name) || $name == "" || !$this->players->exists($name)) {
+	function getPeanuts($name = null)
+	{
+		if (is_null($name) || $name == "" || !$this->players->exists($name))
+		{
 			// Unregistered user
 			return "0";
-		} else {
+		} else
+		{
 			// Name is given and exists, grab that player's peanut count
 			return $this->players->get($name)->Peanuts;
 		}
 	}
 
-	function getPlayerCollection($name = null) {
-		if (is_null($name) || $name == "" || !$this->players->exists($name)) {
+	function getPlayerCollection($name = null)
+	{
+		if (is_null($name) || $name == "" || !$this->players->exists($name))
+		{
 			// Unregistered user
 			return "N/A";
-		} else {
+		} else
+		{
 			// Name is given and exists, grab that player's card collection
 			$tableCollections = $this->collections->some('Player', $name);
 			$collection = array();
-			foreach ($tableCollections as $type) {
+			foreach ($tableCollections as $type)
+			{
 				$collection[] = $type->Piece;
 			}
 
@@ -97,10 +116,12 @@ class Player extends Application {
 			ksort($partCount);
 
 			$cardList = array();
-			foreach ($partCount as $key => $value) {
+			foreach ($partCount as $key => $value)
+			{
 				$row['Series'] = substr($key, 0, 2);
 				$row['Type'] = substr($key, 2, 1);
-				switch (substr($key, -1, 1)) {
+				switch (substr($key, -1, 1))
+				{
 					case 0:
 						$row['Part'] = "Top";
 						break;
@@ -121,25 +142,31 @@ class Player extends Application {
 		}
 	}
 
-	function getLatestActivity($name = null) {
-		if (is_null($name) || $name == "" || !$this->players->exists($name)) {
+	function getLatestActivity($name = null)
+	{
+		if (is_null($name) || $name == "" || !$this->players->exists($name))
+		{
 			// Unregistered user
 			return "N/A";
-		} else {
+		} else
+		{
 			// Name is given and exists, grab that player's transaction history
 			$tableTransactions = $this->transactions->some('Player', $name);
 
 			$history = array();
-			foreach ($tableTransactions as $type) {
+			foreach ($tableTransactions as $type)
+			{
 				$row['Timestamp'] = $type->DateTime;
 				$row['Trans'] = $type->Trans;
-				switch ($type->Trans) {
+				switch ($type->Trans)
+				{
 					case "buy":
 						$row['Peanuts'] = "(-10)";
 						$row['Action'] = "Purchased a card pack.";
 						break;
 					case "sell":
-						switch ($type->Series) {
+						switch ($type->Series)
+						{
 							case 11:
 								$row['Peanuts'] = "+20";
 								$row['Action'] = "Sold an assembled bot (matched Series 11).";
