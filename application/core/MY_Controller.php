@@ -27,6 +27,7 @@ class Application extends CI_Controller
 		$this->errors = array();
 		$this->data['pageTitle'] = 'Welcome';   // our default page
 		$this->data['appRoot'] = (strlen(dirname($_SERVER['SCRIPT_NAME'])) === 1 ? "" : dirname($_SERVER['SCRIPT_NAME']));
+
 		/**
 		 * Add in additional CSS files used (in the CSS folder) by using
 		 * 
@@ -90,6 +91,9 @@ class Application extends CI_Controller
 			}
 			$this->data['loadStyles'] = $this->parser->parse('__css', $styles, true);
 		}
+
+		//Display the login form
+		$this->data['loginForm'] = $this->parser->parse('_loginForm', $this->data, TRUE);
 
 		// finally, build the browser page!
 		$this->data['data'] = &$this->data;
