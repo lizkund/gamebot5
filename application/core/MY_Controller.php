@@ -111,8 +111,8 @@ class Application extends CI_Controller
 			if (!is_null($this->input->post('login')))
 			{
 				// login button clicked
-				$username = $this->input->post('username');
-				if ($username != "")
+				$username = ucwords(strtolower(str_replace(" ", "", $this->input->post('username'))));
+				if ($username != "" && !is_null($username))
 				{
 					$this->session->username = $username;
 					$player['player'] = $this->session->username;
@@ -131,16 +131,17 @@ class Application extends CI_Controller
 			if (!is_null($this->input->post('logout')))
 			{
 				// logout button clicked
-				unset($_SESSION['username']);
+				session_destroy();
 				$display = $this->load->view('_loginForm', '', true);
 			} else
 			{
-
+				// User still logged in.
 				$player['player'] = $this->session->username;
 				$display = $this->parser->parse('_loggedIn', $player, true);
 			}
 		}
 
+		// Send for CI parsing!
 		$this->data['userSession'] = $display;
 	}
 
