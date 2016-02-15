@@ -13,7 +13,7 @@ $(document).ready(function () {
 	});
 
 	$('#Assemble').click(function () {
-		$('#result').append("Your BOT will be assembled (in the next version)!");
+		$('#result').text("Your BOT will be assembled (in the next version)!");
 		//location.reload(true);
 	});
 });
