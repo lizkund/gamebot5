@@ -104,8 +104,22 @@
 	nav > ul > li.has-sub.active > a span {
 		background: url(../images/icon_minus.png) 96% center no-repeat;
 	}
+
+	nav > ul > #logged{
+		background: url(../images/menu-bg.png) repeat;
+		margin: 0;
+		width: 100%;
+		border-top: 1px solid #000000;
+	}
+
+	#logged > div{
+		padding: 15px 20px;
+		text-align: center;
+	}
+
 	.message {
 		font-size: 1.2em;
+		padding-right: 20px;
 	}
 
 	footer { 
