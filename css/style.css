@@ -97,17 +97,20 @@ form.login{
 #logged{
 	float: right;
 	margin-right: 15px;
+	margin-top: 15px;
 }
 
 .message {
 	margin: 5px 0 5px 0;
 	color: white;
 	position: relative;
-	display: inline-block;
+	display: inline;
+	padding-right: 20px;
 }
 
-#logged > form {
+#logged > div > form {
 	text-align: right;
+	display: inline;
 }
 
 footer {
