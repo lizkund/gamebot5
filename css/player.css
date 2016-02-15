@@ -40,7 +40,7 @@ div.content-right {
 }
 
 #playerCards {
-	
+
 	display: inline-block;
 	padding-bottom: 2em;
 }
@@ -54,4 +54,69 @@ caption {
 
 .center {
 	margin-left: 10%;
+}
+
+@media only screen and (max-width: 980px) {
+	#content-in{
+		float: none;
+		margin: 0 auto;
+		padding: 1em 0 1em 0em;
+	}
+
+	.center {
+		text-align: center;
+		width: auto;
+		margin: 0 auto;
+	}
+
+	#playerDetails > p {
+		text-align: left;
+	}
+
+	div.content-right {
+		width: 99%;
+		display: inline-block;
+		margin: 0 auto;
+		text-align: left;
+	}
+
+	#playerCards {
+		width: 100%;
+	}
+
+	.content-right > div > table > caption{
+		font-size: 1.2em;
+	}
+}
+
+@media only screen and (max-width: 619px) {
+	#content-in{
+		float: none;
+		margin: 0 auto;
+		padding: 1em 0 1em 0em;
+	}
+
+	.center {
+		text-align: center;
+		width: auto;
+	}
+
+	#playerDetails > p {
+		text-align: left;
+	}
+
+	div.content-right {
+		width: 99%;
+		display: inline-block;
+		margin: 0 auto;
+		text-align: left;
+	}
+
+	#playerCards {
+		width: 100%;
+	}
+
+	.content-right > div > table > caption{
+		font-size: 1.2em;
+	}
 }
