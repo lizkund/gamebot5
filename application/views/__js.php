@@ -6,5 +6,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <!-- Load files for JS scripting -->
 {scripts}
-<script src="{appRoot}/js/{filename}.js"></script>{/scripts}
+<script type="text/javascript" src="{link}"></script>{/scripts}
 <!-- End Load files for JS scripting -->
