@@ -24,6 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</nav>
 		<div id="container">
 			<div id="content">
+				{debug}
 				<div id='content-in'>
 					{content}
 				</div>

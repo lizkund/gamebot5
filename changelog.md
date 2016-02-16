@@ -1,7 +1,9 @@
 # Project Changelog
->Template: YYYY-MM-DD HH:MM - Comment
+>Template: * YYYY-MM-DD HH:MM - Comment
 
-* 2016-02-14 02:15 - Bug Fix inside player detail selection, as well as overall commenting, formatting, alignment
+* 2016-02-15 16:00 - Added a permanent debug variable for CI parsing in base Controller/view.
+* 2016-02-15 15:00 - Bug fix for initial player selection on page load.
+* 2016-02-15 02:15 - Bug Fix inside player detail selection, as well as overall commenting, formatting, alignment
 * 2016-02-14 23:40 - Fixed User Registration.
 * 2016-02-14 23:25 - Optimized jQuery script in Assemble.
 * 2016-02-14 23:11 - Logged in text and button is aligned next to each other
