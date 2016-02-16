@@ -40,7 +40,8 @@ class Player extends Application {
 
 		$this->data['pageTitle'] = 'Player Portfolios'; // Page Title
 		$this->data['pagebody'] = 'player'; // this is the view we want shown
-
+		// Add Page-specific style to load
+		$this->pageStyles[] = "player";
 
 		if (is_null($name))
 		{
@@ -57,9 +58,6 @@ class Player extends Application {
 			$this->data['playerCards'] = $this->parser->parse('_playerCard1', $this->getPlayerCollection($name), true);
 			$this->data['playerLatestActivity'] = $this->parser->parse('_transactions', $this->getLatestActivity($name), true);
 		}
-
-		// Page-specific style to load
-		$this->pageStyles[] = "player";
 
 		// Render Page!
 		$this->render();
