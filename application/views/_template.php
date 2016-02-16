@@ -34,7 +34,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<p id='footer-in'>Copyright &copy; 2016 <strong>Group 5 - Assignment 1</strong></p>
 		</footer>
 	</body>
-	<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
-	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
 	{loadScripts}
 </html>

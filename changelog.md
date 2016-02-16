@@ -1,6 +1,7 @@
 # Project Changelog
 >Template: * YYYY-MM-DD HH:MM - Comment
 
+* 2016-02-15 20:00 - Enhanced the CSS and JS to be able to load hotlinks on certain pages, or globally
 * 2016-02-15 16:00 - Added a permanent debug variable for CI parsing in base Controller/view.
 * 2016-02-15 15:00 - Bug fix for initial player selection on page load.
 * 2016-02-15 02:15 - Bug Fix inside player detail selection, as well as overall commenting, formatting, alignment

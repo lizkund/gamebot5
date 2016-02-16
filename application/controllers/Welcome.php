@@ -19,30 +19,32 @@ class Welcome extends Application {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index() {
+	public function index()
+	{
 		$this->data['pagebody'] = 'home'; // this is the view we want shown
 		$this->data['gameStatus'] = "Offline - Currently under development"; // Something to be better implemented later on.
-
 		//get the data from all tables
 		$players = $this->players->all();
 		$cards = $this->collections->all();
 		$table = $this->series->all();
 
 		$playersTable = array();
-		foreach ($players as $player) {
+		foreach ($players as $player)
+		{
 			$pRow = array(
 				//calling the columns from the database players column
-				'link' => $this->data['appRoot'] . "/player/" . $player->Player,
-				'Player' => $player->Player,
-				'Peanuts' => $player->Peanuts,
-				'Equity' => (count($this->collections->some('Player', $player->Player)) + $player->Peanuts)
+				'link'		 => $this->data['appRoot'] . "/player/" . $player->Player,
+				'Player'	 => $player->Player,
+				'Peanuts'	 => $player->Peanuts,
+				'Equity'	 => (count($this->collections->some('Player', $player->Player)) + $player->Peanuts)
 			);
 
 			$playersTable[] = $pRow;
 		}
 
 		// Obtain a list of columns
-		foreach ($playersTable as $key => $row) {
+		foreach ($playersTable as $key => $row)
+		{
 			$equity[$key] = $row['Equity'];
 			$name[$key] = $row['Player'];
 		}
@@ -56,20 +58,22 @@ class Welcome extends Application {
 		$this->data['playerInfo'] = $this->parser->parse('_playerinfo1', $PlayerSummary, true);
 
 		$series = array();
-		foreach ($table as $type) {
+		foreach ($table as $type)
+		{
 			$row = array(
 				//calling the columns from the database series column
-				'Series' => $type->Series,
-				'Description' => $type->Description,
-				'Frequency' => $type->Frequency,
-				'Value' => $type->Value,
-				'Quantity' => 0
+				'Series'		 => $type->Series,
+				'Description'	 => $type->Description,
+				'Frequency'		 => $type->Frequency,
+				'Value'			 => $type->Value,
+				'Quantity'		 => 0
 			);
 			$series[] = $row;
 		}
 
 		// Get all cards in db
-		foreach ($cards as $card) {
+		foreach ($cards as $card)
+		{
 			$key = array_search(substr($card->Piece, 0, 2), array_column($series, 'Series'));
 			$series[$key]['Quantity'] ++;
 		}
@@ -78,8 +82,12 @@ class Welcome extends Application {
 		$summary['collection'] = $series;
 		$this->data['botPieceSummary'] = $this->parser->parse('_pieceSummary', $summary, true);
 
-		$this->pageStyles[] = "home"; // Page-specific style to load
-		
+		// Add Page-specific style to load
+		$this->pageStyles[] = "home";
+
+		// Add Page-specific scripts to load
+		$this->pageScripts[] = "https://cdn.datatables.net/t/dt/dt-1.10.11,fh-3.1.1,r-2.0.2/datatables.min.css";
+
 		$this->render();
 	}
 
