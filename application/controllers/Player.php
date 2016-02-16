@@ -79,7 +79,7 @@ class Player extends Application {
 			$option['link'] = $this->data['appRoot'] . "/player/" . $player->Player;
 
 			// Check for selected/disabled
-			$check0 = $_SERVER['PATH_INFO'] == ("/player/");
+			$check0 = $_SERVER['PATH_INFO'] == ("/player");
 			$check1 = $_SERVER['PATH_INFO'] == ("/player/" . $player->Player);
 			$check2 = $this->session->username == $player->Player;
 
