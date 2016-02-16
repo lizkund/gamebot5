@@ -33,6 +33,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<footer>
 			<p id='footer-in'>Copyright &copy; 2016 <strong>Group 5 - Assignment 1</strong></p>
 		</footer>
+		{loadScripts}
 	</body>
-	{loadScripts}
 </html>
