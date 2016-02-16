@@ -12,8 +12,8 @@ class Assemble extends Application {
 	public function index()
 	{
 		$this->data['pageTitle'] = 'Assemble Your Bot'; // Page Title
-		$this->pageScripts[] = "assemble"; // Page-specific script to load
-		$this->pageStyles[] = "assemble"; // Page-specific style to load
+		$this->pageScripts[] = "assemble"; // Add Page-specific script to load
+		$this->pageStyles[] = "assemble"; // Add Page-specific style to load
 		// Grab username from Session if any
 		$player = $this->session->username;
 
