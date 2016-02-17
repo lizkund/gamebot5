@@ -3,11 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * The Glorious Template
  */
-?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+?><!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<title>{pageTitle} | {site-title}</title>
-		<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<link rel="shortcut icon" type="image/ico" href="{appRoot}/images/favicon.ico" />
 		{loadStyles}
 	</head>
@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<header>
 			<div id='header-in'>
 				<a href="{appRoot}/">
-					<img src="{appRoot}/images/banner.png"/>
+					<img src="{appRoot}/images/banner.png" alt="Site Banner Image"/>
 				</a>
 			</div>
 		</header>
