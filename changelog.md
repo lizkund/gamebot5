@@ -1,6 +1,7 @@
 # Project Changelog
 >Template: * YYYY-MM-DD HH:MM - Comment
 
+* 2016-02-16 18:55 - Fixed the html tags for the tables on the Welcome view.
 * 2016-02-15 20:45 - Added index.html to asset folders to prevent direct access
 * 2016-02-15 20:28 - Moved script loading in template to proper place
 * 2016-02-15 20:22 - Shuffled some lines around
