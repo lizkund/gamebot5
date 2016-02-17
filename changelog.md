@@ -1,6 +1,7 @@
 # Project Changelog
 >Template: * YYYY-MM-DD HH:MM - Comment
 
+* 2016-02-17 15:40 - Fixed the SQL Triggers for Transaction Table (not really utilized in Assignment 1 though)
 * 2016-02-16 21:15 - Added the Img alt attribute in assembly, and have jQuery replace with selected option text
 * 2016-02-16 20:52 - Adjusted some html attributes, changed DOCTYPE to use html5 (`<!DOCTYPE html>`), and validated for html5
 * 2016-02-16 20:25 - Fixed logout action/prodecures so page is properly reloaded
