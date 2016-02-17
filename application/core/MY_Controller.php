@@ -197,8 +197,8 @@ class Application extends CI_Controller {
 			if (!is_null($this->input->post('logout')))
 			{
 				// logout button clicked
-				session_destroy();
-				$display = $this->load->view('_loginForm', '', true);
+				$this->session->sess_destroy();
+				redirect($_SERVER['REQUEST_URI']);
 			} else
 			{
 				// User still logged in.
