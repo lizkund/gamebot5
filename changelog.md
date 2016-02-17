@@ -1,6 +1,7 @@
 # Project Changelog
 >Template: * YYYY-MM-DD HH:MM - Comment
 
+* 2016-02-16 20:52 - Adjusted some html attributes, changed DOCTYPE to use html5 (`<!DOCTYPE html>`), and validated for html5
 * 2016-02-16 20:25 - Fixed logout action/prodecures so page is properly reloaded
 * 2016-02-16 18:55 - Fixed the html tags for the tables on the Welcome view.
 * 2016-02-15 20:45 - Added index.html to asset folders to prevent direct access

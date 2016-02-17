@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Login Form
  */
 ?>
-<form class="login" method="POST">
+<form class="login" method="post">
 	<table>
 		<tr>
 			<td><label for="username">Username:</label></td>
