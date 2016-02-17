@@ -4,18 +4,27 @@ $(document).ready(function () {
 	var middle = $("#middle").val();
 	var bottom = $("#bottom").val();
 
-	// On dropdown changes, replace image with selected bot piece image
+	// On dropdown changes, replace image with selected bot piece image, and alter alt description
 	$('#top').change(function () {
 		top = $(this).val();
-		$('#topPiece').attr('src', window.location.pathname.replace("/assemble", "") + '/images/bot/' + top + '.jpeg');
+		$('#topPiece').attr({
+			src: window.location.pathname.replace("/assemble", "") + '/images/bot/' + top + '.jpeg',
+			alt: $('#top option:selected').text()
+		});
 	});
 	$('#middle').change(function () {
 		middle = $(this).val();
-		$('#middlePiece').attr('src', window.location.pathname.replace("/assemble", "") + '/images/bot/' + middle + '.jpeg');
+		$('#middlePiece').attr({
+			src: window.location.pathname.replace("/assemble", "") + '/images/bot/' + middle + '.jpeg',
+			alt: $('#middle option:selected').text()
+		});
 	});
 	$('#bottom').change(function () {
 		bottom = $(this).val();
-		$('#bottomPiece').attr('src', window.location.pathname.replace("/assemble", "") + '/images/bot/' + bottom + '.jpeg');
+		$('#bottomPiece').attr({
+			src: window.location.pathname.replace("/assemble", "") + '/images/bot/' + bottom + '.jpeg',
+			alt: $('#bottom option:selected').text()
+		});
 	});
 
 	// only enable the assemble button if all three have a bot piece
