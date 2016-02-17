@@ -185,9 +185,11 @@ FOR EACH ROW BEGIN
 		IF (NEW.Series IS NULL) THEN
 			SIGNAL SQLSTATE '45000'
 			SET MESSAGE_TEXT = '\'Series\' must be a valid series (or 1 for single card, 5 for mismatched set) when \'Trans\' is set to "sell"';
-		ELSEIF(NEW.Series IN ((SELECT `series` FROM `Series`) OR (0, 1, 5))) THEN
-			SIGNAL SQLSTATE '45000'
-			SET MESSAGE_TEXT = 'Invalid \'Series\' entered';
+		ELSEIF(NEW.Series NOT IN (SELECT `series` FROM `Series`)) THEN
+			IF (NEW.Series NOT IN (0, 1, 5)) THEN
+				SIGNAL SQLSTATE '45000'
+				SET MESSAGE_TEXT = 'Invalid Bot Series entered';
+			END IF;
 		END IF;
 	END IF;
 END//
@@ -197,9 +199,11 @@ FOR EACH ROW BEGIN
 		IF (NEW.Series IS NULL) THEN
 			SIGNAL SQLSTATE '45000'
 			SET MESSAGE_TEXT = '\'Series\' must be a valid series (or 1 for single card, 5 for mismatched set) when \'Trans\' is set to "sell"';
-		ELSEIF(NEW.Series IN ((SELECT `series` FROM `Series`) OR (0, 1, 5))) THEN
-			SIGNAL SQLSTATE '45000'
-			SET MESSAGE_TEXT = 'Invalid \'Series\' entered';
+		ELSEIF(NEW.Series NOT IN (SELECT `series` FROM `Series`)) THEN
+			IF (NEW.Series NOT IN (0, 1, 5)) THEN
+				SIGNAL SQLSTATE '45000'
+				SET MESSAGE_TEXT = 'Invalid Bot Series entered';
+			END IF;
 		END IF;
 	END IF;
 END//
