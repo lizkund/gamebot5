@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<table>
 		<tr>
 			<td>
-				<img id="topPiece" src="{appRoot}/images/bot/gen-0.png" alt="Generic Bot Top Piece Image" />
+				<img id="topPiece" src="{appRoot}/assets/images/bot/gen-0.png" alt="Generic Bot Top Piece Image" />
 			</td>
 			<td class="select">
 				<p>Top Piece</p>
@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</tr>
 		<tr>
 			<td>
-				<img id="middlePiece" src="{appRoot}/images/bot/gen-1.png" alt="Generic Bot Middle Piece Image" />
+				<img id="middlePiece" src="{appRoot}/assets/images/bot/gen-1.png" alt="Generic Bot Middle Piece Image" />
 			</td>
 			<td class="select">
 				<p>Middle Piece</p>
@@ -33,7 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</tr>
 		<tr>
 			<td>
-				<img id="bottomPiece" src="{appRoot}/images/bot/gen-2.png" alt="Generic Bot Bottom Piece Image" />
+				<img id="bottomPiece" src="{appRoot}/assets/images/bot/gen-2.png" alt="Generic Bot Bottom Piece Image" />
 			</td>
 			<td class="select">
 				<p>Bottom Piece</p>

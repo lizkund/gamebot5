@@ -8,21 +8,21 @@ $(document).ready(function () {
 	$('#top').change(function () {
 		top = $(this).val();
 		$('#topPiece').attr({
-			src: window.location.pathname.replace("/assemble", "") + '/images/bot/' + top + '.jpeg',
+			src: window.location.pathname.replace("/assemble", "") + '/assets/images/bot/' + top + '.jpeg',
 			alt: $('#top option:selected').text()
 		});
 	});
 	$('#middle').change(function () {
 		middle = $(this).val();
 		$('#middlePiece').attr({
-			src: window.location.pathname.replace("/assemble", "") + '/images/bot/' + middle + '.jpeg',
+			src: window.location.pathname.replace("/assemble", "") + '/assets/images/bot/' + middle + '.jpeg',
 			alt: $('#middle option:selected').text()
 		});
 	});
 	$('#bottom').change(function () {
 		bottom = $(this).val();
 		$('#bottomPiece').attr({
-			src: window.location.pathname.replace("/assemble", "") + '/images/bot/' + bottom + '.jpeg',
+			src: window.location.pathname.replace("/assemble", "") + '/assets/images/bot/' + bottom + '.jpeg',
 			alt: $('#bottom option:selected').text()
 		});
 	});
