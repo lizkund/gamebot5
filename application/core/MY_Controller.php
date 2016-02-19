@@ -102,7 +102,7 @@ class Application extends CI_Controller {
 				{
 					// Did not detect http, therefore it's a local file (hopefully)
 					// NOTE:  We aren't checking for file existence
-					$temp['link'] = $this->data['appRoot'] . "/js/" . $js . ".js";
+					$temp['link'] = $this->data['appRoot'] . "/assets/js/" . $js . ".js";
 				} else
 				{
 					// Detected http, attempt to validate link via PHP Validation
@@ -140,7 +140,7 @@ class Application extends CI_Controller {
 				{
 					// Did not detect http, therefore it's a local file (hopefully)
 					// NOTE:  We aren't checking for file existence
-					$temp['link'] = $this->data['appRoot'] . "/css/" . $css . ".css";
+					$temp['link'] = $this->data['appRoot'] . "/assets/css/" . $css . ".css";
 				} else
 				{
 					// Detected http, attempt to validate link via PHP Validation

@@ -8,14 +8,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<head>
 		<title>{pageTitle} | {site-title}</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-		<link rel="shortcut icon" type="image/ico" href="{appRoot}/images/favicon.ico" />
+		<link rel="shortcut icon" type="image/ico" href="{appRoot}/assets/images/favicon.ico" />
 		{loadStyles}
 	</head>
 	<body>
 		<header>
 			<div id='header-in'>
 				<a href="{appRoot}/">
-					<img src="{appRoot}/images/banner.png" alt="Site Banner Image"/>
+					<img src="{appRoot}/assets/images/banner.png" alt="Site Banner Image"/>
 				</a>
 			</div>
 		</header>
