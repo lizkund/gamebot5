@@ -10,6 +10,7 @@
 
 div.contentleft {
 	display: inline-block;
+	float: left;
 }
 
 #avatar > img {
@@ -39,17 +40,14 @@ div.content-right {
 	font-size: 1.2em;
 }
 
-#playerCards {
-
-	display: inline-block;
-	padding-bottom: 2em;
+#player_cards {
+	border: black solid 1.5px;
+	min-height: 150px;
 }
 
-caption {
-	text-align: left;
-	font-weight: bold;
-	padding-left: 10px;
-	font-size: 1.0em;
+#latest_activity{
+	border: black solid 1.5px;
+	min-height: 150px;
 }
 
 .center {
