@@ -25,9 +25,11 @@ class Welcome extends Application {
 		$this->data['gameStatus'] = "Offline - Currently under development"; // Something to be better implemented later on.
 		// Add Page-specific style to load
 		$this->pageStyles[] = "home";
+		$this->pageStyles[] = "https://cdn.datatables.net/t/dt/dt-1.10.11,fh-3.1.1,r-2.0.2/datatables.min.css";
 
 		// Add Page-specific scripts to load
-		$this->pageScripts[] = "https://cdn.datatables.net/t/dt/dt-1.10.11,fh-3.1.1,r-2.0.2/datatables.min.css";
+		$this->pageScripts[] = "https://cdn.datatables.net/t/dt/dt-1.10.11,fh-3.1.1,r-2.0.2/datatables.min.js";
+		$this->pageScripts[] = "welcome";
 
 		//get the data from all tables
 		$players = $this->players->all();

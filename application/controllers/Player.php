@@ -42,6 +42,8 @@ class Player extends Application {
 		$this->data['pagebody'] = 'player'; // this is the view we want shown
 		// Add Page-specific style to load
 		$this->pageStyles[] = "player";
+		// Add Page-specific script to load
+		$this->pageScripts[] = "player";
 
 		if (is_null($name))
 		{
@@ -51,6 +53,12 @@ class Player extends Application {
 		} else
 		{
 			// Username exists and in db
+			// Add Page-specifc style to load
+			$this->pageStyles[] = "https://cdn.datatables.net/t/dt/dt-1.10.11,fh-3.1.1,r-2.0.2/datatables.min.css";
+
+			// Add Page-specific scripts to load
+			$this->pageScripts[] = "https://cdn.datatables.net/t/dt/dt-1.10.11,fh-3.1.1,r-2.0.2/datatables.min.js";
+
 			$this->data['playerName'] = $name;
 			$this->data['players'] = $this->parser->parse('_playerSelect1', $this->getPlayers(), true);
 			$this->data['avatar'] = $this->getAvatar($name);
@@ -117,7 +125,7 @@ class Player extends Application {
 //			return $this->players->get($name)->Avatar;
 //		}
 		// To be implemented properly in a later version.  For now, everyone gets a generic avatar
-		return $this->data['appRoot'] . "/images/generic_photo.png";
+		return $this->data['appRoot'] . "/assets/images/generic_photo.png";
 	}
 
 	//Get Player Peanut count

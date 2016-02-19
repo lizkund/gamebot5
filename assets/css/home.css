@@ -45,10 +45,6 @@ div#player_info {
 		display: inline-block;
 	}
 
-	table > thead {
-		font-size: 0.8em;
-	}
-
 	#bot_summary {
 		border: none;
 	}
