@@ -105,6 +105,17 @@
 		background: url(../images/icon_minus.png) 96% center no-repeat;
 	}
 
+	#loginbar{
+		background: url(../images/menu-bg.png) repeat;
+		margin: 0 auto;
+		border-top: 1px solid #000000;
+		padding: 15px 20px;
+	}
+	
+	#loginbar > form.login{
+		padding: 0;
+	}
+
 	nav > ul > #logged{
 		background: url(../images/menu-bg.png) repeat;
 		margin: 0;

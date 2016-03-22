@@ -80,16 +80,15 @@ label {
 
 form.login{
 	position: relative;
-	width: 35%;
 	float:right;
 	padding-top: 1em;
 }
 
-.textbox { 
-	border: 1px solid #999; 
+.textbox {
+	border: 1px solid #999;
 	outline:0;
 	height: 1.5em;
-	width: 98%;
+	width: 140px;
 	font-size: 12pt;
 	display: block;
 }
@@ -224,7 +223,7 @@ nav ul li.currentPage li.currentPage span{
 
 @media only screen and (max-width: 980px) {
 	form.login {
-		width: 95%;
+		/* width: 95%; */
 		float: none;
 	}
 }
