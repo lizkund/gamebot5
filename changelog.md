@@ -1,6 +1,10 @@
 # Project Changelog
 >Template: * YYYY-MM-DD HH:MM - Comment
 
+### Changelog for Assignment 2
+
+### Changelog for Assignment 1
+* 2016-04-07 11:15 - Modified SQL for marking compatibility reasons. (removed foreign keys and triggers)
 * 2016-02-19 12:34 - Now using jQuery DataTables plugin (better responsiveness/format/layout/sortable).
 * 2016-02-18 21:00 - Missed one image remap in player view
 * 2016-02-18 19:50 - Moved css, js, images folders into assets folder and remapped accordingly
