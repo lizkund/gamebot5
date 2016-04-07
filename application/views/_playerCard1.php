@@ -6,7 +6,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 {pCards}
 <tr>
-	<td>{Series}</td>
+	<td class="control"></td>
+	<td class="all">{Series}</td>
 	<td>{Type}</td>
 	<td>{Part}</td>
 	<td>{Quantity}</td>

@@ -1,7 +1,7 @@
 -- ------------------ DROP AND RECREATE SCHEMA --------------------
-DROP DATABASE IF EXISTS botcards;
-CREATE DATABASE botcards;
-USE botcards;
+DROP DATABASE IF EXISTS botcards56;
+CREATE DATABASE botcards56;
+USE botcards56;
 
 --
 -- Database: `botcards`
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `players` (
 	`Peanuts`	INT(5)		DEFAULT 100		NOT NULL,
 	CONSTRAINT `players_pk`
 		PRIMARY KEY (`Player`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+);
 
 --
 -- Initial Bogus data for table `players`
@@ -64,12 +64,8 @@ CREATE TABLE IF NOT EXISTS `collections` (
 	`Player`	VARCHAR(25)								NOT NULL,
 	`Datetime`	DATETIME	DEFAULT CURRENT_TIMESTAMP	NOT NULL,
 	CONSTRAINT `collections_pk`
-		PRIMARY KEY (`Token`),
-	CONSTRAINT `collections_fk`
-		FOREIGN KEY (`Player`) REFERENCES `Players`(`Player`)
-			ON UPDATE CASCADE
-			ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+		PRIMARY KEY (`Token`)
+);
 
 --
 -- Initial Bogus data for table `collections`
@@ -120,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `series` (
 	`Value`			INT(3)			NOT NULL,
 	CONSTRAINT `series_pk`
 		PRIMARY KEY (`Series`)
-)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
+);
 
 --
 -- Initial Bogus data for table `series`
@@ -144,12 +140,8 @@ CREATE TABLE IF NOT EXISTS `transactions` (
 	`Series`	INT(2)		DEFAULT NULL,
 	`Trans`		VARCHAR(4)								NOT NULL,
 	CONSTRAINT `transactions_pk`
-		PRIMARY KEY (`DateTime`, `Player`),
-	CONSTRAINT `transactions_fk1`
-		FOREIGN KEY (`Player`) REFERENCES `Players`(`Player`)
-			ON UPDATE CASCADE
-			ON DELETE CASCADE
-)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
+		PRIMARY KEY (`DateTime`, `Player`)
+);
 
 --
 -- Initial Bogus data for table `transactions`
@@ -169,42 +161,3 @@ INSERT INTO `transactions` (`DateTime`, `Player`, `Series`, `Trans`) VALUES
 ('2016.02.01-09:01:50', 'George', '11', 'sell'),
 ('2016.02.01-09:01:55', 'George', null, 'buy'),
 ('2016.02.01-09:02:00', 'George', null, 'buy');
-
--- --------------------------------------------------------
-
---
--- Special Triggers to check specific column if certain criteria is met
---
-
-DROP TRIGGER IF EXISTS botcards.BeforeInsert_CheckSeriesIfSellTrans;
-DROP TRIGGER IF EXISTS botcards.BeforeUpdate_CheckSeriesIfSellTrans;
-DELIMITER //
-CREATE TRIGGER `BeforeInsert_CheckSeriesIfSellTrans` BEFORE INSERT ON `transactions`
-FOR EACH ROW BEGIN
-	IF (NEW.Trans = "sell") THEN
-		IF (NEW.Series IS NULL) THEN
-			SIGNAL SQLSTATE '45000'
-			SET MESSAGE_TEXT = '\'Series\' must be a valid series (or 1 for single card, 5 for mismatched set) when \'Trans\' is set to "sell"';
-		ELSEIF(NEW.Series NOT IN (SELECT `series` FROM `Series`)) THEN
-			IF (NEW.Series NOT IN (0, 1, 5)) THEN
-				SIGNAL SQLSTATE '45000'
-				SET MESSAGE_TEXT = 'Invalid Bot Series entered';
-			END IF;
-		END IF;
-	END IF;
-END//
-CREATE TRIGGER `BeforeUpdate_CheckSeriesIfSellTrans` BEFORE UPDATE ON `transactions`
-FOR EACH ROW BEGIN
-	IF (NEW.Trans = "sell") THEN
-		IF (NEW.Series IS NULL) THEN
-			SIGNAL SQLSTATE '45000'
-			SET MESSAGE_TEXT = '\'Series\' must be a valid series (or 1 for single card, 5 for mismatched set) when \'Trans\' is set to "sell"';
-		ELSEIF(NEW.Series NOT IN (SELECT `series` FROM `Series`)) THEN
-			IF (NEW.Series NOT IN (0, 1, 5)) THEN
-				SIGNAL SQLSTATE '45000'
-				SET MESSAGE_TEXT = 'Invalid Bot Series entered';
-			END IF;
-		END IF;
-	END IF;
-END//
-DELIMITER ;

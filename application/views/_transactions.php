@@ -6,7 +6,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 {transactions}
 <tr>
-	<td>{Timestamp}</td>
+	<td class="control"></td>
+	<td class="all">{Timestamp}</td>
 	<td>{Trans}</td>
 	<td>{Peanuts}</td>
 	<td>{Action}</td>

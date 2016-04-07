@@ -8,8 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Default application controller
  *
  */
-class Application extends CI_Controller
-{
+class Application extends CI_Controller {
 
 	protected $data = array();   // parameters for view components
 	protected $id;  // identifier for our content
@@ -23,31 +22,49 @@ class Application extends CI_Controller
 	{
 		parent::__construct();
 		$this->data = array();
-		$this->data['site-title'] = 'GameBots G5: Assignment 1'; // our default title
+
+		// our default title
+		$this->data['site-title'] = 'GameBots G5: Assignment 1';
+
 		$this->errors = array();
-		$this->data['pageTitle'] = 'Welcome';   // our default page
+
+		// our default page
+		$this->data['pageTitle'] = 'Welcome';
+
+		// For debugging purposes only.
+		$this->data['debug'] = "";
+
+		// This special line of code will check if the application is running in a folder or not
+		// i.e.:  gamebot5.local will not return anything, whereas localhost/gamebot5 will return /gamebot5
 		$this->data['appRoot'] = (strlen(dirname($_SERVER['SCRIPT_NAME'])) === 1 ? "" : dirname($_SERVER['SCRIPT_NAME']));
 
 		/**
-		 * Add in additional CSS files used (in the CSS folder) by using
+		 * Add in additional CSS files used by using:
 		 * 
-		 * 		$this->pageStyles[] = "filename";
+		 * 		$this->pageStyles[] = 'string';
 		 * 
-		 * in the INDIVIDUAL controllers where the filename 
-		 * is just the filename WITHOUT the extension
+		 * in the INDIVIDUAL controllers.
+		 * 
+		 * You can specify:
+		 * 	local css files (in the css folder) by just the filename WITHOUT the .css extension
+		 * 	CDN Hotlinks by the full url (including http)
 		 */
+		// Set global styles to load on all pages
 		$this->pageStyles = array('button', 'smartphone', 'style', 'tablet', 'table');
 
 		/**
-		 * Add in additional JS files used (in the JS folder) by using
+		 * Add in additional JS files used by using
 		 * 
-		 * 		$this->pageScripts[] = "filename";
+		 * 		$this->pageScripts[] = 'string';
 		 * 
-		 * in the INDIVIDUAL controllers where the filename 
-		 * is just the filename WITHOUT the extension
+		 * You can specify:
+		 * 	local js files (in the js folder) by just the filename WITHOUT the .js extension
+		 * 	CDN Hotlinks by the full url (including http)
 		 */
-		$this->pageScripts = array();
+		// set global scripts to load on all pages
+		$this->pageScripts = array('https://code.jquery.com/jquery-2.2.0.min.js');
 
+		// Check if user is logged in or not, and display according login/logout part
 		$this->userSession();
 	}
 
@@ -65,34 +82,83 @@ class Application extends CI_Controller
 		}
 		$tempMenu['userSession'] = $this->data['userSession'];
 
-
+		// Parse and return the html string of the links for menubar navigation
 		$this->data['menubar'] = $this->parser->parse('_menubar', $tempMenu, true);
 
-
+		// CI Parser to insert into template
 		$this->data['loadScripts'] = "";
+
+		// Check if we need to load any JavaScript files
 		if (!empty($this->pageScripts))
 		{
+			// at least one value was provided to the pageScripts array
+			// Make sure only unique values are in the array
+			$this->pageScripts = array_unique($this->pageScripts);
 			$scripts = array();
 			foreach ($this->pageScripts as $js)
 			{
-				$temp['appRoot'] = $this->data['appRoot'];
-				$temp['filename'] = $js;
+				// Check if the value is a local file or a hotlink
+				if (strpos($js, "http") === false)
+				{
+					// Did not detect http, therefore it's a local file (hopefully)
+					// NOTE:  We aren't checking for file existence
+					$temp['link'] = $this->data['appRoot'] . "/assets/js/" . $js . ".js";
+				} else
+				{
+					// Detected http, attempt to validate link via PHP Validation
+					if (filter_var($js, FILTER_VALIDATE_URL))
+					{
+						// Link validated by PHP
+						$temp['link'] = $js;
+					} else
+					{
+						// Invalid Link... Do nothing.
+					}
+				}
+				// Add into the proper array for CI Parsing
 				$scripts['scripts'][] = $temp;
 			}
 
+			// Parse and return html string
 			$this->data['loadScripts'] = $this->parser->parse('__js', $scripts, true);
 		}
 
+		// CI Parser to insert into template
 		$this->data['loadStyles'] = "";
+
+		// Check if we need to load any CSS files
 		if (!empty($this->pageStyles))
 		{
+			// at least one value was provided to the pageStyles array
+			// Make sure only unique values are in the array
+			$this->pageStyles = array_unique($this->pageStyles);
 			$styles = array();
 			foreach ($this->pageStyles as $css)
 			{
-				$temp['appRoot'] = $this->data['appRoot'];
-				$temp['filename'] = $css;
+				// check if the value is a local file or a hotlink
+				if (strpos($css, "http") === false)
+				{
+					// Did not detect http, therefore it's a local file (hopefully)
+					// NOTE:  We aren't checking for file existence
+					$temp['link'] = $this->data['appRoot'] . "/assets/css/" . $css . ".css";
+				} else
+				{
+					// Detected http, attempt to validate link via PHP Validation
+					if (filter_var($css, FILTER_VALIDATE_URL))
+					{
+						// Link validated by PHP
+						$temp['link'] = $css;
+					} else
+					{
+						// Invalid Link... Do nothing.
+					}
+				}
+
+				// Add into proper array for CI Parsing
 				$styles['styles'][] = $temp;
 			}
+
+			// Parse and return html string
 			$this->data['loadStyles'] = $this->parser->parse('__css', $styles, true);
 		}
 
@@ -111,14 +177,16 @@ class Application extends CI_Controller
 			if (!is_null($this->input->post('login')))
 			{
 				// login button clicked
-				$username = $this->input->post('username');
-				if ($username != "")
+				$username = ucwords(strtolower(str_replace(" ", "", $this->input->post('username'))));
+				if ($username != "" && !is_null($username))
 				{
 					$this->session->username = $username;
 					$player['player'] = $this->session->username;
 					if (!$this->players->exists($username))
 					{
-						$this->players->add($this->session->username);
+						$this->players->add(array(
+							"Player" => $this->session->username)
+						);
 					}
 					$display = $this->parser->parse('_loggedIn', $player, true);
 				}
@@ -129,16 +197,17 @@ class Application extends CI_Controller
 			if (!is_null($this->input->post('logout')))
 			{
 				// logout button clicked
-				unset($_SESSION['username']);
-				$display = $this->load->view('_loginForm', '', true);
+				$this->session->sess_destroy();
+				redirect($_SERVER['REQUEST_URI']);
 			} else
 			{
-
+				// User still logged in.
 				$player['player'] = $this->session->username;
 				$display = $this->parser->parse('_loggedIn', $player, true);
 			}
 		}
 
+		// Send for CI parsing!
 		$this->data['userSession'] = $display;
 	}
 

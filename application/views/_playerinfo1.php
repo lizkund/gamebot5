@@ -6,7 +6,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 {Players}
 <tr>
-	<td><a href="{link}">{Player}</a></td>
+	<td class="control"></td>
+	<td class="all"><a href="{link}">{Player}</a></td>
 	<td>{Peanuts}</td>
 	<td>{Equity}</td>
 </tr>

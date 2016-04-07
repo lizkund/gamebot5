@@ -1,0 +1,10 @@
+table th {
+	background-color: #004A75;
+	color: #FFF;
+}
+@media only screen and (max-width: 980px) {
+	table > thead,
+	table > tfoot {
+		font-size: 0.8em;
+	}
+}
