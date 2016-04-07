@@ -63,6 +63,7 @@ div#header-in > a > img{
 	margin: 0 auto;
 	background: #F6F6F6;
 	overflow: auto;
+	padding-bottom: 1em;
 }
 #content-in {
 	width: 95%;
@@ -79,8 +80,6 @@ label {
 }
 
 form.login{
-	position: relative;
-	width: 35%;
 	float:right;
 	padding-top: 1em;
 }
@@ -224,7 +223,7 @@ nav ul li.currentPage li.currentPage span{
 
 @media only screen and (max-width: 980px) {
 	form.login {
-		width: 95%;
-		float: none;
+		//width: 95%;
+		float: right;
 	}
 }
