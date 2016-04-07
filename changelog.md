@@ -2,6 +2,7 @@
 >Template: * YYYY-MM-DD HH:MM - Comment
 
 ### Changelog for Assignment 2
+* 2016-04-07 13:50 - Added padding in the content and moved login into the menu bar
 
 ### Changelog for Assignment 1
 * 2016-04-07 11:15 - Modified SQL for marking compatibility reasons. (removed foreign keys and triggers)
