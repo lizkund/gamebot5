@@ -163,9 +163,9 @@ class Account extends Application {
 						if ($valid)
 						{
 							$updatePlayer = array(
-								'Player'	 => strtolower($name),
-								'Password'	 => password_hash($newPassword, PASSWORD_DEFAULT),
-								'LastUpdated' => date('Y-m-d H:i:s')
+								'Player'		 => strtolower($name),
+								'Password'		 => password_hash($newPassword, PASSWORD_DEFAULT),
+								'LastUpdated'	 => date('Y-m-d H:i:s')
 							);
 							$this->players->update($updatePlayer);
 							$this->data['pageTitle'] = "Password Change Successful!";
