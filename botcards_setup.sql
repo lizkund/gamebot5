@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `players` (
 	`Password`			VARCHAR(255)								NOT NULL,
 	`AccessLevel`		INT				DEFAULT '1'					NOT NULL,
 	`DateRegistered`	TIMESTAMP		DEFAULT CURRENT_TIMESTAMP	NOT NULL,
-	`LastUpdated`		DATETIME		DEFAULT CURRENT_TIMESTAMP	NOT NULL,
+	`LastUpdated`		DATETIME,
 	`Peanuts`			INT(5)			DEFAULT 100					NOT NULL,
 	CONSTRAINT `players_pk`
 		PRIMARY KEY (`Player`)

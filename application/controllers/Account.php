@@ -50,6 +50,7 @@ class Account extends Application {
 
 				//  At this point Not Logged In
 				$this->data['pageTitle'] = 'Player Account Info';
+				$this->data['regUsername'] = $this->session->regUsername;
 				if (!is_null($this->input->post('regSubmit')))
 				{
 					// Create New Account button clicked
@@ -163,7 +164,8 @@ class Account extends Application {
 						{
 							$updatePlayer = array(
 								'Player'	 => strtolower($name),
-								'Password'	 => password_hash($newPassword, PASSWORD_DEFAULT)
+								'Password'	 => password_hash($newPassword, PASSWORD_DEFAULT),
+								'LastUpdated' => date('Y-m-d H:i:s')
 							);
 							$this->players->update($updatePlayer);
 							$this->data['pageTitle'] = "Password Change Successful!";
@@ -176,7 +178,7 @@ class Account extends Application {
 					$this->data['username'] = $player->Player;
 					$this->data['role'] = ($player->AccessLevel == 99 ? "Admin" : "Player");
 					$this->data['dateRegistered'] = $player->DateRegistered;
-					$this->data['lastUpdated'] = ($player->LastUpdated == $player->DateRegistered ? "Never" : $player->LastUpdated);
+					$this->data['lastUpdated'] = (is_null($player->LastUpdated) ? "Never" : $player->LastUpdated);
 					$this->data['pagebody'] = "account";
 				} else
 				{
