@@ -26,12 +26,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div id="content">
 				{debug}
 				<div id='content-in'>
+					<div id="loginMessage"><p>{loginMessage}</p></div>
 					{content}
 				</div>
 			</div>
 		</div>
 		<footer>
-			<p id='footer-in'>Copyright &copy; 2016 <strong>Group 5 - Assignment 1</strong></p>
+			<p id='footer-in'>Copyright &copy; 2016 <strong>Group 5 - ACIT 4850 Assignment 1 &amp; 2</strong></p>
 		</footer>
 		{loadScripts}
 	</body>

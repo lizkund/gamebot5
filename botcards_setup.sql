@@ -31,25 +31,31 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 
 DROP TABLE IF EXISTS `players`;
 CREATE TABLE IF NOT EXISTS `players` (
-	`Player`	VARCHAR(25)					NOT NULL,
-	`Peanuts`	INT(5)		DEFAULT 100		NOT NULL,
+	`Player`			VARCHAR(25)									NOT NULL,
+	`Password`			VARCHAR(255)								NOT NULL,
+	`AccessLevel`		INT				DEFAULT '1'					NOT NULL,
+	`DateRegistered`	TIMESTAMP		DEFAULT CURRENT_TIMESTAMP	NOT NULL,
+	`LastUpdated`		DATETIME,
+	`Peanuts`			INT(5)			DEFAULT 100					NOT NULL,
 	CONSTRAINT `players_pk`
 		PRIMARY KEY (`Player`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+);
 
 --
 -- Initial Bogus data for table `players`
+-- Initial Passwords for predefined passwords are the same as their username, in lowercase
 --
 
-INSERT INTO `players` (`Player`, `Peanuts`) VALUES
-('Mickey', 200),
-('Donald', 35),
-('George', 500),
-('Henry', 100),
-('Joti', 500),
-('Kenneth', 900),
-('Liz', 502),
-('Yoseph', 404);
+INSERT INTO `players` (`Player`, `Password`, `AccessLevel`, `Peanuts`) VALUES
+('mickey', '$2y$10$hQM3A1zrJ3Qv/kcUKurn3eztXX/zn9XjHNblYFSOx8RFnQy8Awvv2', 1, 200),
+('donald', '$2y$10$AajhaQypQNXsqfNHIAsbAO70vX2DHYfI3L4ePWys8FISVRy7enIom', 1, 35),
+('george', '$2y$10$YjuXoNlaq6c3u/qxoa/y.uFeImB2m6Pblq21icKXJpRvciWVy2Kau', 1, 500),
+('henry', '$2y$10$ppIiFlsaeAcYoYIXLMB4.OO06Szk6a9qj0OXi592B434kr3KGRfSm', 1, 100),
+('joti', '$2y$10$EmYNrk0D89u/v63nDmaoW.12If.OpUU.hQ2s4eX6Cringks9Bmcqm', 99, 500),
+('kenneth', '$2y$10$H14vPLByczPbmNM.ccM26Ob9BotwneB.lB3cve6bpfEpqK30RhRRS', 99, 900),
+('liz', '$2y$10$tArSxekA31n0MfvENV7FmugPst8VW0hK0Y1Yh7mC5Hs0H1kNru2tS', 99, 502),
+('yoseph', '$2y$10$y8NB3GVaFnNWAbzZP/5IBudVKUsNHfziL.UOePqtvB0yhWmREMSq.', 99, 404),
+('admin', '$2y$10$NKavK9B2UJAbkQHyzmcbyeGRjOJOe30mqXef/MoB3epYbqZTgiVGu', 99, 0);
 
 -- --------------------------------------------------------
 
@@ -64,12 +70,8 @@ CREATE TABLE IF NOT EXISTS `collections` (
 	`Player`	VARCHAR(25)								NOT NULL,
 	`Datetime`	DATETIME	DEFAULT CURRENT_TIMESTAMP	NOT NULL,
 	CONSTRAINT `collections_pk`
-		PRIMARY KEY (`Token`),
-	CONSTRAINT `collections_fk`
-		FOREIGN KEY (`Player`) REFERENCES `Players`(`Player`)
-			ON UPDATE CASCADE
-			ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+		PRIMARY KEY (`Token`)
+);
 
 --
 -- Initial Bogus data for table `collections`
@@ -120,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `series` (
 	`Value`			INT(3)			NOT NULL,
 	CONSTRAINT `series_pk`
 		PRIMARY KEY (`Series`)
-)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
+);
 
 --
 -- Initial Bogus data for table `series`
@@ -144,12 +146,8 @@ CREATE TABLE IF NOT EXISTS `transactions` (
 	`Series`	INT(2)		DEFAULT NULL,
 	`Trans`		VARCHAR(4)								NOT NULL,
 	CONSTRAINT `transactions_pk`
-		PRIMARY KEY (`DateTime`, `Player`),
-	CONSTRAINT `transactions_fk1`
-		FOREIGN KEY (`Player`) REFERENCES `Players`(`Player`)
-			ON UPDATE CASCADE
-			ON DELETE CASCADE
-)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
+		PRIMARY KEY (`DateTime`, `Player`)
+);
 
 --
 -- Initial Bogus data for table `transactions`
@@ -169,42 +167,3 @@ INSERT INTO `transactions` (`DateTime`, `Player`, `Series`, `Trans`) VALUES
 ('2016.02.01-09:01:50', 'George', '11', 'sell'),
 ('2016.02.01-09:01:55', 'George', null, 'buy'),
 ('2016.02.01-09:02:00', 'George', null, 'buy');
-
--- --------------------------------------------------------
-
---
--- Special Triggers to check specific column if certain criteria is met
---
-
-DROP TRIGGER IF EXISTS botcards.BeforeInsert_CheckSeriesIfSellTrans;
-DROP TRIGGER IF EXISTS botcards.BeforeUpdate_CheckSeriesIfSellTrans;
-DELIMITER //
-CREATE TRIGGER `BeforeInsert_CheckSeriesIfSellTrans` BEFORE INSERT ON `transactions`
-FOR EACH ROW BEGIN
-	IF (NEW.Trans = "sell") THEN
-		IF (NEW.Series IS NULL) THEN
-			SIGNAL SQLSTATE '45000'
-			SET MESSAGE_TEXT = '\'Series\' must be a valid series (or 1 for single card, 5 for mismatched set) when \'Trans\' is set to "sell"';
-		ELSEIF(NEW.Series NOT IN (SELECT `series` FROM `Series`)) THEN
-			IF (NEW.Series NOT IN (0, 1, 5)) THEN
-				SIGNAL SQLSTATE '45000'
-				SET MESSAGE_TEXT = 'Invalid Bot Series entered';
-			END IF;
-		END IF;
-	END IF;
-END//
-CREATE TRIGGER `BeforeUpdate_CheckSeriesIfSellTrans` BEFORE UPDATE ON `transactions`
-FOR EACH ROW BEGIN
-	IF (NEW.Trans = "sell") THEN
-		IF (NEW.Series IS NULL) THEN
-			SIGNAL SQLSTATE '45000'
-			SET MESSAGE_TEXT = '\'Series\' must be a valid series (or 1 for single card, 5 for mismatched set) when \'Trans\' is set to "sell"';
-		ELSEIF(NEW.Series NOT IN (SELECT `series` FROM `Series`)) THEN
-			IF (NEW.Series NOT IN (0, 1, 5)) THEN
-				SIGNAL SQLSTATE '45000'
-				SET MESSAGE_TEXT = 'Invalid Bot Series entered';
-			END IF;
-		END IF;
-	END IF;
-END//
-DELIMITER ;
