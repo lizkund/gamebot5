@@ -23,7 +23,6 @@ class Assemble extends Application {
 			// username not set; not logged in
 			// Display static message and not load actual page
 			$this->data['staticMessage'] = "This page is only visible to players that are logged in.  Please login using the form in the navigation.";
-			$this->data['pagebody'] = "_message";
 		} else
 		{
 			// username set; player logged in
@@ -85,7 +84,6 @@ class Assemble extends Application {
 			{
 				// Player does not own any cards at the moment.  Display message
 				$this->data['staticMessage'] = "You currently don't have any cards in your collection in our system.  Purchase a card pack first!";
-				$this->data['pagebody'] = "_message";
 			}
 		}
 

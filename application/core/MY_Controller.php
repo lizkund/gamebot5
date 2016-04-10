@@ -34,6 +34,8 @@ class Application extends CI_Controller {
 		// For debugging purposes only.
 		$this->data['debug'] = "";
 
+		$this->data['staticMessage'] = "";
+
 		// This special line of code will check if the application is running in a folder or not
 		// i.e.:  gamebot5.local will not return anything, whereas localhost/gamebot5 will return /gamebot5
 		$this->data['appRoot'] = (strlen(dirname($_SERVER['SCRIPT_NAME'])) === 1 ? "" : dirname($_SERVER['SCRIPT_NAME']));
@@ -64,6 +66,9 @@ class Application extends CI_Controller {
 		// set global scripts to load on all pages
 		$this->pageScripts = array('https://code.jquery.com/jquery-2.2.0.min.js');
 
+		// Reset Login Message for each pageload
+		$this->session->loginMessage = "";
+
 		// Check if user is logged in or not, and display according login/logout part
 		$this->userSession();
 	}
@@ -80,6 +85,26 @@ class Application extends CI_Controller {
 			$record['appRoot'] = $this->data['appRoot'];
 			$tempMenu['menuname'][] = $record;
 		}
+		// Additional links for logged in user
+		if ($this->session->username != "")
+		{
+			$link = array();
+			$link['appRoot'] = $this->data['appRoot'];
+			$link['name'] = 'Account Info';
+			$link['link'] = '/account';
+
+			$tempMenu['menuname'][] = $link;
+
+			// Admin Menu Link
+			if ($this->session->accessLevel == 99)
+			{
+				$link['name'] = 'Admin Management';
+				$link['link'] = '/admin';
+
+				$tempMenu['menuname'][] = $link;
+			}
+		}
+
 		$tempMenu['userSession'] = $this->data['userSession'];
 
 		// Parse and return the html string of the links for menubar navigation
@@ -162,6 +187,19 @@ class Application extends CI_Controller {
 			$this->data['loadStyles'] = $this->parser->parse('__css', $styles, true);
 		}
 
+		// Check if static message parameter is not empty.
+		if (!empty($this->data['staticMessage']))
+		{
+			// Static Message Set.  Override the body content to render with a simple static message.
+			$this->data['pagebody'] = "_message";
+		}
+
+		if ($this->session->loginMessage != "")
+		{
+			$this->data['loginMessage'] = $this->session->loginMessage;
+		}
+		
+
 		$this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
 		// finally, build the browser page!
 		$this->data['data'] = &$this->data;
@@ -173,23 +211,59 @@ class Application extends CI_Controller {
 		$display = $this->load->view('_loginForm', '', true);
 		if (is_null($this->session->username))
 		{
+			// Insert the page user tried to access recently into session.
+			$this->session->pageurl = urlencode($_SERVER['REQUEST_URI']);
+
 			// No username set in session
 			if (!is_null($this->input->post('login')))
 			{
 				// login button clicked
-				$username = ucwords(strtolower(str_replace(" ", "", $this->input->post('username'))));
-				if ($username != "" && !is_null($username))
+				$username = strtolower(str_replace(" ", "", $this->input->post('username')));
+				$password = $this->input->post('password');
+
+				if (!empty($username) && !is_null($username) && !empty($password) & !is_null($password))
 				{
-					$this->session->username = $username;
-					$player['player'] = $this->session->username;
-					if (!$this->players->exists($username))
+					// Username & Password values exist. 
+					// Check if username exists in system
+					if ($this->players->exists($username))
 					{
-						$this->players->add(array(
-							"Player" => $this->session->username)
-						);
+						// Username exists.  Get Player Record
+						$account = $this->players->get($username);
+
+						// Validate username with password given
+						$valid = password_verify($password, $account->Password);
+
+						if ($valid)
+						{
+							// password is a match.  Login successful.
+							$this->session->username = ucfirst($username);
+							$this->session->accessLevel = $account->AccessLevel;
+							$player['player'] = $this->session->username;
+							$display = $this->parser->parse('_loggedIn', $player, true);
+
+							$this->session->loginMessage = "Login Successful -- Welcome aboard, " . $this->session->username . "!";
+						} else
+						{
+							// invalid password supplied.
+							$this->session->loginMessage = "Invalid Username and Password combination.";
+						}
+					} else
+					{
+						// Username does not exist.
+						$this->session->loginMessage = "Invalid Username and Password combination.";
 					}
-					$display = $this->parser->parse('_loggedIn', $player, true);
+				} else
+				{
+					// Either username/password field is blank
+					$this->session->loginMessage = "Missing data in either username or password fields.";
 				}
+			} elseif (!is_null($this->input->post('register')))
+			{
+				// register button clicked
+				redirect("/account/register");
+			} else
+			{
+				$this->session->loginMessage = "You are currently viewing this site as a guest.  Login or register to do more awesome things!";
 			}
 		} else
 		{
@@ -202,6 +276,7 @@ class Application extends CI_Controller {
 			} else
 			{
 				// User still logged in.
+				$this->data['loginMessage'] = "Done playing, " . $this->session->username . "?  If so, don't forget to log out using the button above.";
 				$player['player'] = $this->session->username;
 				$display = $this->parser->parse('_loggedIn', $player, true);
 			}

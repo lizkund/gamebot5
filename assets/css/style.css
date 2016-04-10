@@ -79,6 +79,10 @@ label {
 	color: white;
 }
 
+#registration label {
+	color: black;
+}
+
 form.login{
 	float:right;
 	padding-top: 1em;
@@ -132,7 +136,7 @@ input.error {
 	border: 1px dotted red;
 }
 
-label.error {
+label.error, .error {
 	color: red;
 	font-style: italic;
 }
@@ -223,7 +227,7 @@ nav ul li.currentPage li.currentPage span{
 
 @media only screen and (max-width: 980px) {
 	form.login {
-		//width: 95%;
+		width: 95%;
 		float: right;
 	}
 }

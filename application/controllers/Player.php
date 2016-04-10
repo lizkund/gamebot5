@@ -49,7 +49,6 @@ class Player extends Application {
 		{
 			// Display message instead of regular page
 			$this->data['staticMessage'] = "We're sorry, but at this time only registered users can view other player details.  Simply register/login in the navigation bar to continue.";
-			$this->data['pagebody'] = "_message";
 		} else
 		{
 			// Username exists and in db
@@ -87,7 +86,7 @@ class Player extends Application {
 			// Check for selected/disabled
 			$check0 = $_SERVER['PATH_INFO'] == ("/player");
 			$check1 = $_SERVER['PATH_INFO'] == ("/player/" . $player->Player);
-			$check2 = $this->session->username == $player->Player;
+			$check2 = $this->session->username == ucfirst($player->Player);
 
 			if ($check0 && $check2)
 			{
