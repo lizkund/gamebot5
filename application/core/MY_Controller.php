@@ -314,8 +314,8 @@ class Application extends CI_Controller {
 		$config['upload_path'] = './assets/images/avatar/';
 		$config['allowed_types'] = 'jpeg|jpg|png';
 		$config['max_size'] = 2048;
-		$config['max_width'] = 135;
-		$config['max_height'] = 160;
+		$config['max_width'] = 175;
+		$config['max_height'] = 200;
 		$config['encrypt_name'] = TRUE;
 
 		$this->load->library('upload', $config);
