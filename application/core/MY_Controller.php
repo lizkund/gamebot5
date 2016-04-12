@@ -273,40 +273,41 @@ class Application extends CI_Controller {
 
 	function agentRegister() {
 
-		//pull game status
-		//check if status is "2" (ready) or "3" (open)
-		//grab authentication token & send it to the bot server
-		//send post request to /register
-		//post team, name, password
-		$data = array("team" => "a1", "name" => "boo", "password" => "tuesday");
+		
+		$status = $this->getStatus();
+		
+		//check if status is ready or open
+		if ($status=='2' || $status== '3') {
+			$data = array("team" => "a2", "name" => "boo3", "password" => "tuesday");
 
-		//declaring variables according to array
-		$team = $data['team'];
-		$name = $data['name'];
+			//declaring variables according to array
+			$team = $data['team'];
+			$name = $data['name'];
 
-		$string = http_build_query($data);
+			$string = http_build_query($data);
 
-		//send post request to BCC/register 
-		$posturl = curl_init('http://botcards.jlparry.com/register');
-		curl_setopt($posturl, CURLOPT_POST, true);
-		curl_setopt($posturl, CURLOPT_POSTFIELDS, $string);
-		curl_setopt($posturl, CURLOPT_RETURNTRANSFER, true);
+			//send post request to BCC/register 
+			$posturl = curl_init('http://botcards.jlparry.com/register');
+			curl_setopt($posturl, CURLOPT_POST, true);
+			curl_setopt($posturl, CURLOPT_POSTFIELDS, $string);
+			curl_setopt($posturl, CURLOPT_RETURNTRANSFER, true);
 
-		$response = curl_exec($posturl);
-		curl_close($posturl);
+			$response = curl_exec($posturl);
+			curl_close($posturl);
 
-		$hi = simplexml_load_string($response);
+			$hi = simplexml_load_string($response);
 
-		//add agent to database
-		$agents = $this->agents->create();
-		$agents->team_id = $team;
-		$agents->team_name = $name;
-		$agents->auth_token = (String) $hi->token;
+			//add agent to database
+			$agents = $this->agents->create();
+			$agents->team_id = $team;
+			$agents->team_name = $name;
+			$agents->auth_token = (String) $hi->token;
 
-		$this->agents->add((array) $agents);
+			$this->agents->add((array) $agents);
 
-		//DEBUGGING PURPOSES
-		$this->data['debug'] = print_r($hi, true);
+			//DEBUGGING PURPOSES
+			$this->data['debug'] = print_r($hi, true);
+		}
 	}
 
 	/* End of file MY_Controller.php */
