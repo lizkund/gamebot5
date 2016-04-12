@@ -352,9 +352,6 @@ class Application extends CI_Controller {
 			$agents->auth_token = (String) $hi->token;
 
 			$this->agents->add((array) $agents);
-
-			//DEBUGGING PURPOSES
-			$this->data['debug'] = print_r($hi, true);
 		}
 	}
 
