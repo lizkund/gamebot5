@@ -70,7 +70,7 @@ class Application extends CI_Controller {
 
 		// Check if user is logged in or not, and display according login/logout part
 		$this->userSession();
-
+		$this->getStatus();
 		$this->agentRegister();
 	}
 
@@ -255,23 +255,37 @@ class Application extends CI_Controller {
 		$this->data['userSession'] = $display;
 	}
 
+	function getStatus() {
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, "http://botcards.jlparry.com/status");
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_POST, true);
+		$result = curl_exec($ch);
+		curl_close($ch);
+
+		$xml = simplexml_load_string($result);
+		$msg = "round: " . $xml->round . " | ";
+		$msg .= "state: " . $xml->state . " | ";
+		$msg .= "countdown: " . $xml->countdown . " | ";
+		$msg .= "description: " . $xml->desc;
+		return $msg;
+	}
+
 	function agentRegister() {
-		
+
 		//pull game status
 		//check if status is "2" (ready) or "3" (open)
-
 		//grab authentication token & send it to the bot server
 		//send post request to /register
-
 		//post team, name, password
 		$data = array("team" => "a1", "name" => "boo", "password" => "tuesday");
-		
+
 		//declaring variables according to array
 		$team = $data['team'];
 		$name = $data['name'];
 
 		$string = http_build_query($data);
-		
+
 		//send post request to BCC/register 
 		$posturl = curl_init('http://botcards.jlparry.com/register');
 		curl_setopt($posturl, CURLOPT_POST, true);
@@ -287,7 +301,7 @@ class Application extends CI_Controller {
 		$agents = $this->agents->create();
 		$agents->team_id = $team;
 		$agents->team_name = $name;
-		$agents->auth_token = (String)$hi->token;
+		$agents->auth_token = (String) $hi->token;
 
 		$this->agents->add((array) $agents);
 
@@ -295,7 +309,6 @@ class Application extends CI_Controller {
 		$this->data['debug'] = print_r($hi, true);
 	}
 
+	/* End of file MY_Controller.php */
+	/* Location: application/core/MY_Controller.php */
 }
-
-/* End of file MY_Controller.php */
-/* Location: application/core/MY_Controller.php */
