@@ -85,8 +85,7 @@ class Application extends CI_Controller {
 			$tempMenu['menuname'][] = $record;
 		}
 		// Additional links for logged in user
-		if ($this->session->username != "")
-		{
+		if ($this->session->username != "") {
 			// Admin Menu Link
 			if ($this->session->accessLevel == 99) {
 				$link['name'] = 'Admin Management';
@@ -259,8 +258,7 @@ class Application extends CI_Controller {
 	 * Gets the status of the botcards server
 	 */
 
-	function getStatus($output = true)
-	{
+	function getStatus($output = true) {
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "http://botcards.jlparry.com/status");
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -268,14 +266,13 @@ class Application extends CI_Controller {
 		$result = curl_exec($ch);
 		curl_close($ch);
 		$xml = simplexml_load_string($result);
-		if($output) {
-		$msg = "round: " . $xml->round . " | ";
-		$msg .= "state: " . $xml->state . " | ";
-		$msg .= "countdown: " . $xml->countdown . " seconds" . " | ";
-		$msg .= "description: " . $xml->desc;
-		return $msg;
-		}
-		else {
+		if ($output) {
+			$msg = "round: " . $xml->round . " | ";
+			$msg .= "state: " . $xml->state . " | ";
+			$msg .= "countdown: " . $xml->countdown . " seconds" . " | ";
+			$msg .= "description: " . $xml->desc;
+			return $msg;
+		} else {
 			return array(
 				"round" => $xml->round,
 				"state" => $xml->state,
@@ -289,8 +286,7 @@ class Application extends CI_Controller {
 	 * Generic function for avatar uploading
 	 */
 
-	function avatar_upload()
-	{
+	function avatar_upload() {
 		$config['upload_path'] = './assets/images/avatar/';
 		$config['allowed_types'] = 'jpeg|jpg|png';
 		$config['max_size'] = 2048;
@@ -300,33 +296,30 @@ class Application extends CI_Controller {
 
 		$this->load->library('upload', $config);
 
-		if (!$this->upload->do_upload('avatarUpload'))
-		{
+		if (!$this->upload->do_upload('avatarUpload')) {
 			return array(
-				'uploaded'		 => FALSE,
+				'uploaded' => FALSE,
 				'display_errors' => $this->upload->display_errors()
 			);
-		} else
-		{
+		} else {
 			return array(
-				'uploaded'		 => TRUE,
-				'upload_data'	 => $this->upload->data()
+				'uploaded' => TRUE,
+				'upload_data' => $this->upload->data()
 			);
 		}
 	}
-	
+
 	/*
 	 *  function for agent registration
 	 */
-	
+
 	function agentRegister() {
-		
+
 		$status = $this->getStatus(false)['state'];
-		
+
 		//check if status is ready or open
-		if ($status =='2' || $status =='3') 
-			{
-			$data = array("team" => "a2", "name" => "boo3", "password" => "tuesday");
+		if ($status == '2' || $status == '3') {
+			$data = array("team" => "a2", "name" => "gamebots", "password" => "tuesday");
 
 			//declaring variables according to array
 			$team = $data['team'];
@@ -345,13 +338,23 @@ class Application extends CI_Controller {
 
 			$hi = simplexml_load_string($response);
 
-			//add agent to database
-			$agents = $this->agents->create();
-			$agents->team_id = $team;
-			$agents->team_name = $name;
-			$agents->auth_token = (String) $hi->token;
+//			//check if agent exists in the record
+			if ($this->agents->exists((String) $hi->token)) {
+				$this->agents->get((String) $hi->token);
+			} else {
+//				//delete record	
+				$this->agents->delete((String) $hi->token);
 
-			$this->agents->add((array) $agents);
+				//add agent to database
+				$agents = $this->agents->create();
+				$agents->team_id = $team;
+				$agents->team_name = $name;
+				$agents->auth_token = (String) $hi->token;
+
+				$this->agents->add((array) $agents);
+			}
+			//DEBUGGING PURPOSES
+			$this->data['debug'] = print_r($hi, true);
 		}
 	}
 
