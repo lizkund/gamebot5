@@ -71,6 +71,7 @@ class Application extends CI_Controller {
 
 		// Check if user is logged in or not, and display according login/logout part
 		$this->userSession();
+		$this->getStatus();
 	}
 
 	/**
@@ -281,12 +282,26 @@ class Application extends CI_Controller {
 				$display = $this->parser->parse('_loggedIn', $player, true);
 			}
 		}
-
+	
 		// Send for CI parsing!
 		$this->data['userSession'] = $display;
 	}
 
-}
+	function getStatus(){
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, "http://botcards.jlparry.com/status");
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_POST, true);
+		$result = curl_exec($ch);
+		curl_close($ch);
 
+		$xml = simplexml_load_string($result);
+		$msg = "round: " . $xml->round ." | ";
+		$msg .= "state: " . $xml->state . " | ";
+		$msg .= "countdown: " . $xml->countdown . " | ";
+		$msg .= "description: " . $xml->desc;
+		return $msg;
+	}
 /* End of file MY_Controller.php */
 /* Location: application/core/MY_Controller.php */
+}
