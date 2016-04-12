@@ -259,7 +259,7 @@ class Application extends CI_Controller {
 	 * Gets the status of the botcards server
 	 */
 
-	function getStatus()
+	function getStatus($output = true)
 	{
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "http://botcards.jlparry.com/status");
@@ -268,11 +268,21 @@ class Application extends CI_Controller {
 		$result = curl_exec($ch);
 		curl_close($ch);
 		$xml = simplexml_load_string($result);
+		if($output) {
 		$msg = "round: " . $xml->round . " | ";
 		$msg .= "state: " . $xml->state . " | ";
 		$msg .= "countdown: " . $xml->countdown . " seconds" . " | ";
 		$msg .= "description: " . $xml->desc;
 		return $msg;
+		}
+		else {
+			return array(
+				"round" => $xml->round,
+				"state" => $xml->state,
+				"countdown" => $xml->countdown,
+				"desc" => $xml->desc,
+			);
+		}
 	}
 
 	/*
@@ -305,13 +315,17 @@ class Application extends CI_Controller {
 		}
 	}
 	
+	/*
+	 *  function for agent registration
+	 */
+	
 	function agentRegister() {
-
 		
-		$status = $this->getStatus();
+		$status = $this->getStatus(false)['state'];
 		
 		//check if status is ready or open
-		if ($status=='2' || $status== '3') {
+		if ($status =='2' || $status =='3') 
+			{
 			$data = array("team" => "a2", "name" => "boo3", "password" => "tuesday");
 
 			//declaring variables according to array
