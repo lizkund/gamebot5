@@ -300,7 +300,7 @@ class Application extends CI_Controller {
 		$xml = simplexml_load_string($result);
 		$msg = "round: " . $xml->round . " | ";
 		$msg .= "state: " . $xml->state . " | ";
-		$msg .= "countdown: " . $xml->countdown . " | ";
+		$msg .= "countdown: " . $xml->countdown . " seconds" . " | ";
 		$msg .= "description: " . $xml->desc;
 		return $msg;
 	}
