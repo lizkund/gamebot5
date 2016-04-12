@@ -301,8 +301,10 @@ class Application extends CI_Controller {
 		if($output) {
 		$msg = "round: " . $xml->round . " | ";
 		$msg .= "state: " . $xml->state . " | ";
-		$msg .= "countdown: " . $xml->countdown . " seconds" . " | ";
-		$msg .= "description: " . $xml->desc;
+		$msg .= "description: " . $xml->desc . " | ";
+		$msg .= "countdown: " . $xml->countdown . " seconds" . " until " . $xml->upcoming ." | ";
+		$msg .= "current time: " . $xml->now . " | ";
+		$msg .= "close time: " . $xml->alarm . " | ";
 		return $msg;
 		}
 		else {
@@ -311,6 +313,8 @@ class Application extends CI_Controller {
 				"state" => $xml->state,
 				"countdown" => $xml->countdown,
 				"desc" => $xml->desc,
+				"now" => $xml->now,
+				"alarm" => $xml->alarm
 			);
 		}
 	}
