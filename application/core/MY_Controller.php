@@ -18,8 +18,7 @@ class Application extends CI_Controller {
 	 * Establish view parameters & load common helpers
 	 */
 
-	function __construct()
-	{
+	function __construct() {
 		parent::__construct();
 		$this->data = array();
 
@@ -71,23 +70,22 @@ class Application extends CI_Controller {
 
 		// Check if user is logged in or not, and display according login/logout part
 		$this->userSession();
+
+		$this->agentRegister();
 	}
 
 	/**
 	 * Render this page
 	 */
-	function render()
-	{
+	function render() {
 		// This is a workaround to dynamically append a folder name if application is not in root.
 		$tempMenu = array();
-		foreach ($this->config->item('menu_choices')['menuname'] as $record)
-		{
+		foreach ($this->config->item('menu_choices')['menuname'] as $record) {
 			$record['appRoot'] = $this->data['appRoot'];
 			$tempMenu['menuname'][] = $record;
 		}
 		// Additional links for logged in user
-		if ($this->session->username != "")
-		{
+		if ($this->session->username != "") {
 			$link = array();
 			$link['appRoot'] = $this->data['appRoot'];
 			$link['name'] = 'Account Info';
@@ -96,8 +94,7 @@ class Application extends CI_Controller {
 			$tempMenu['menuname'][] = $link;
 
 			// Admin Menu Link
-			if ($this->session->accessLevel == 99)
-			{
+			if ($this->session->accessLevel == 99) {
 				$link['name'] = 'Admin Management';
 				$link['link'] = '/admin';
 
@@ -114,29 +111,23 @@ class Application extends CI_Controller {
 		$this->data['loadScripts'] = "";
 
 		// Check if we need to load any JavaScript files
-		if (!empty($this->pageScripts))
-		{
+		if (!empty($this->pageScripts)) {
 			// at least one value was provided to the pageScripts array
 			// Make sure only unique values are in the array
 			$this->pageScripts = array_unique($this->pageScripts);
 			$scripts = array();
-			foreach ($this->pageScripts as $js)
-			{
+			foreach ($this->pageScripts as $js) {
 				// Check if the value is a local file or a hotlink
-				if (strpos($js, "http") === false)
-				{
+				if (strpos($js, "http") === false) {
 					// Did not detect http, therefore it's a local file (hopefully)
 					// NOTE:  We aren't checking for file existence
 					$temp['link'] = $this->data['appRoot'] . "/assets/js/" . $js . ".js";
-				} else
-				{
+				} else {
 					// Detected http, attempt to validate link via PHP Validation
-					if (filter_var($js, FILTER_VALIDATE_URL))
-					{
+					if (filter_var($js, FILTER_VALIDATE_URL)) {
 						// Link validated by PHP
 						$temp['link'] = $js;
-					} else
-					{
+					} else {
 						// Invalid Link... Do nothing.
 					}
 				}
@@ -152,29 +143,23 @@ class Application extends CI_Controller {
 		$this->data['loadStyles'] = "";
 
 		// Check if we need to load any CSS files
-		if (!empty($this->pageStyles))
-		{
+		if (!empty($this->pageStyles)) {
 			// at least one value was provided to the pageStyles array
 			// Make sure only unique values are in the array
 			$this->pageStyles = array_unique($this->pageStyles);
 			$styles = array();
-			foreach ($this->pageStyles as $css)
-			{
+			foreach ($this->pageStyles as $css) {
 				// check if the value is a local file or a hotlink
-				if (strpos($css, "http") === false)
-				{
+				if (strpos($css, "http") === false) {
 					// Did not detect http, therefore it's a local file (hopefully)
 					// NOTE:  We aren't checking for file existence
 					$temp['link'] = $this->data['appRoot'] . "/assets/css/" . $css . ".css";
-				} else
-				{
+				} else {
 					// Detected http, attempt to validate link via PHP Validation
-					if (filter_var($css, FILTER_VALIDATE_URL))
-					{
+					if (filter_var($css, FILTER_VALIDATE_URL)) {
 						// Link validated by PHP
 						$temp['link'] = $css;
-					} else
-					{
+					} else {
 						// Invalid Link... Do nothing.
 					}
 				}
@@ -188,17 +173,15 @@ class Application extends CI_Controller {
 		}
 
 		// Check if static message parameter is not empty.
-		if (!empty($this->data['staticMessage']))
-		{
+		if (!empty($this->data['staticMessage'])) {
 			// Static Message Set.  Override the body content to render with a simple static message.
 			$this->data['pagebody'] = "_message";
 		}
 
-		if ($this->session->loginMessage != "")
-		{
+		if ($this->session->loginMessage != "") {
 			$this->data['loginMessage'] = $this->session->loginMessage;
 		}
-		
+
 
 		$this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
 		// finally, build the browser page!
@@ -206,35 +189,29 @@ class Application extends CI_Controller {
 		$this->parser->parse('_template', $this->data);
 	}
 
-	function userSession()
-	{
+	function userSession() {
 		$display = $this->load->view('_loginForm', '', true);
-		if (is_null($this->session->username))
-		{
+		if (is_null($this->session->username)) {
 			// Insert the page user tried to access recently into session.
 			$this->session->pageurl = urlencode($_SERVER['REQUEST_URI']);
 
 			// No username set in session
-			if (!is_null($this->input->post('login')))
-			{
+			if (!is_null($this->input->post('login'))) {
 				// login button clicked
 				$username = strtolower(str_replace(" ", "", $this->input->post('username')));
 				$password = $this->input->post('password');
 
-				if (!empty($username) && !is_null($username) && !empty($password) & !is_null($password))
-				{
+				if (!empty($username) && !is_null($username) && !empty($password) & !is_null($password)) {
 					// Username & Password values exist. 
 					// Check if username exists in system
-					if ($this->players->exists($username))
-					{
+					if ($this->players->exists($username)) {
 						// Username exists.  Get Player Record
 						$account = $this->players->get($username);
 
 						// Validate username with password given
 						$valid = password_verify($password, $account->Password);
 
-						if ($valid)
-						{
+						if ($valid) {
 							// password is a match.  Login successful.
 							$this->session->username = ucfirst($username);
 							$this->session->accessLevel = $account->AccessLevel;
@@ -242,39 +219,31 @@ class Application extends CI_Controller {
 							$display = $this->parser->parse('_loggedIn', $player, true);
 
 							$this->session->loginMessage = "Login Successful -- Welcome aboard, " . $this->session->username . "!";
-						} else
-						{
+						} else {
 							// invalid password supplied.
 							$this->session->loginMessage = "Invalid Username and Password combination.";
 						}
-					} else
-					{
+					} else {
 						// Username does not exist.
 						$this->session->loginMessage = "Invalid Username and Password combination.";
 					}
-				} else
-				{
+				} else {
 					// Either username/password field is blank
 					$this->session->loginMessage = "Missing data in either username or password fields.";
 				}
-			} elseif (!is_null($this->input->post('register')))
-			{
+			} elseif (!is_null($this->input->post('register'))) {
 				// register button clicked
 				redirect("/account/register");
-			} else
-			{
+			} else {
 				$this->session->loginMessage = "You are currently viewing this site as a guest.  Login or register to do more awesome things!";
 			}
-		} else
-		{
+		} else {
 			// Username in session
-			if (!is_null($this->input->post('logout')))
-			{
+			if (!is_null($this->input->post('logout'))) {
 				// logout button clicked
 				$this->session->sess_destroy();
 				redirect($_SERVER['REQUEST_URI']);
-			} else
-			{
+			} else {
 				// User still logged in.
 				$this->data['loginMessage'] = "Done playing, " . $this->session->username . "?  If so, don't forget to log out using the button above.";
 				$player['player'] = $this->session->username;
@@ -284,6 +253,46 @@ class Application extends CI_Controller {
 
 		// Send for CI parsing!
 		$this->data['userSession'] = $display;
+	}
+
+	function agentRegister() {
+		
+		//pull game status
+		//check if status is "2" (ready) or "3" (open)
+
+		//grab authentication token & send it to the bot server
+		//send post request to /register
+
+		//post team, name, password
+		$data = array("team" => "a1", "name" => "boo", "password" => "tuesday");
+		
+		//declaring variables according to array
+		$team = $data['team'];
+		$name = $data['name'];
+
+		$string = http_build_query($data);
+		
+		//send post request to BCC/register 
+		$posturl = curl_init('http://botcards.jlparry.com/register');
+		curl_setopt($posturl, CURLOPT_POST, true);
+		curl_setopt($posturl, CURLOPT_POSTFIELDS, $string);
+		curl_setopt($posturl, CURLOPT_RETURNTRANSFER, true);
+
+		$response = curl_exec($posturl);
+		curl_close($posturl);
+
+		$hi = simplexml_load_string($response);
+
+		//add agent to database
+		$agents = $this->agents->create();
+		$agents->team_id = $team;
+		$agents->team_name = $name;
+		$agents->auth_token = (String)$hi->token;
+
+		$this->agents->add((array) $agents);
+
+		//DEBUGGING PURPOSES
+		$this->data['debug'] = print_r($hi, true);
 	}
 
 }
