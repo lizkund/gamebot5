@@ -298,7 +298,7 @@ class Application extends CI_Controller {
 		$result = curl_exec($ch);
 		curl_close($ch);
 		$xml = simplexml_load_string($result);
-		if($output = true) {
+		if($output) {
 		$msg = "round: " . $xml->round . " | ";
 		$msg .= "state: " . $xml->state . " | ";
 		$msg .= "countdown: " . $xml->countdown . " seconds" . " | ";
@@ -306,7 +306,7 @@ class Application extends CI_Controller {
 		return $msg;
 		}
 		else {
-			$result = array(
+			return array(
 				"round" => $xml->round,
 				"state" => $xml->state,
 				"countdown" => $xml->countdown,
