@@ -70,7 +70,6 @@ class Application extends CI_Controller {
 
 		// Check if user is logged in or not, and display according login/logout part
 		$this->userSession();
-		$this->getStatus();
 		$this->agentRegister();
 	}
 
@@ -319,11 +318,7 @@ class Application extends CI_Controller {
 
 		//check if status is ready or open
 		if ($status == '2' || $status == '3') {
-			$data = array("team" => "a2", "name" => "gamebots", "password" => "tuesday");
-
-			//declaring variables according to array
-			$team = $data['team'];
-			$name = $data['name'];
+			$data = array("team" => "a99", "name" => "James_007", "password" => "tuesday");
 
 			$string = http_build_query($data);
 
@@ -339,19 +334,18 @@ class Application extends CI_Controller {
 			$hi = simplexml_load_string($response);
 
 //			//check if agent exists in the record
-			if ($this->agents->exists((String) $hi->token)) {
-				$this->agents->get((String) $hi->token);
-			} else {
-//				//delete record	
+			if (!$this->agents->exists((String) $hi->token)) {
+				//delete record	
 				$this->agents->delete((String) $hi->token);
 
 				//add agent to database
 				$agents = $this->agents->create();
-				$agents->team_id = $team;
-				$agents->team_name = $name;
+				$agents->team_id = $data['team'];
+				$agents->team_name = $data['name'];
 				$agents->auth_token = (String) $hi->token;
 
 				$this->agents->add((array) $agents);
+				$hi = array('replaced' => 'yes', 'simplexml' => $hi);
 			}
 			//DEBUGGING PURPOSES
 			$this->data['debug'] = print_r($hi, true);
